@@ -44,6 +44,7 @@ export class HomeComponent {
     }
   }
   private setupEventListeners() {
+    
     this.canvas!.addEventListener('mousedown', this.onMouseDown.bind(this));
     this.canvas!.addEventListener('mousemove', this.onMouseMove.bind(this));
     this.canvas!.addEventListener('mouseup', this.onMouseUp.bind(this));
@@ -110,6 +111,11 @@ export class HomeComponent {
       this.context!.beginPath();
       this.context!.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
       this.context!.fillStyle = `rgba(255, 255, 255, ${bubble.opacity})`;
+      // this.context!.shadowColor = "#ffffff";
+      // this.context!.shadowBlur = 3;
+      // this.context!.shadowOffsetX = -3;
+      // this.context!.shadowOffsetY = -2;
+     
       this.context!.fill();
     });
 
@@ -129,7 +135,7 @@ class Bubble {
   constructor(x: number, y: number, radius: number) {
     this.x = x;
     this.y = y;
-    this.radius = radius;
+    this.radius = radius * 0.1 ;
     this.opacity = Math.random() * 0.5 + 0.1;
     this.speed = Math.random() * 1 + 0.5;
     this.directionX = Math.random() < 0.5 ? -1 : 1;
