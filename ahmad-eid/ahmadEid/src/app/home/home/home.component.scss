@@ -1,0 +1,103 @@
+.categories{
+    width: 100%;
+    height: 100%;
+    background-color: #252934;
+}
+
+.category{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 25px;
+    width: 90%;
+    height: 600px;
+    margin: 8vh auto;
+}
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+   // z-index: -1;
+  }
+
+.soapBubble{
+    position:relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    outline: 0 solid rgba(0,0,0,.7) ;
+    transition:1s;
+    }
+  
+    .soapBubble:hover .bubbleImg{
+   // box-shadow: 6vmin 6vmin 0vmin rgba(0,80,80,0 ), 1px 1px 2px rgba(255,0,255,.4);
+    border-color: #fff;
+    cursor: pointer;
+    }
+    .soapBubble div{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    }
+    .bubbleImg{
+    border-radius: 10px;
+    border:3px solid rgba(255,255,255,.5);
+    transition: 1s;
+    // background-image:
+    //     url("data:image/svg+xml;utf8, <svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='50' fill='none'/><circle cx='24' cy='24' r='7.5' fill='white' style='filter:blur(.5px)'/><path d='M78 58.4999C69.5 72.4999 56 78.4999 53.5 80.9999C51 83.4999 50 89.9999 59.5 87.4999C69 84.9999 82.5 76.4999 86.5 67.4999C90.5 58.5 86.5 44.5 78 58.4999Z' fill='rgba(255,255,255,.9)' style='filter:blur(0px)'/></svg>"),
+    //     radial-gradient(circle at 70% 96%,white .5%, rgba(255,255,200,.4) 2%, transparent 9%) ,
+    //     radial-gradient( at 30% 20%,white 1%, rgba(255,255,200,1) 2%, transparent 20%,transparent 50%, rgba(0,200,200,.3) 73%,rgba(0,80,80,.3) 84% ),     
+    //     radial-gradient(circle at 0% 0%,rgba(255,0,255,.7) 2%,transparent 80%);
+    background-size: cover;
+    //box-shadow: 2vmin 6vmin 0vmin rgba(0,80,80,.2 ), 1px 1px 2px rgba(255,0,255,.4);
+    }
+    .moveX{
+    animation-name: moveX;
+    animation-duration: 1.4s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    }
+    @keyframes moveX{ 
+    from{transform: translateX(-5px);}
+    to{transform: translateX(5px);}
+    }
+    .moveY{
+    animation-name: moveY;
+    animation-duration: 1.4s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    }
+    @keyframes moveY { 
+    from{transform: translateY(-5px);}
+    to{transform: translateY(5px);}
+    }
+    .deformX{
+    animation-name: deformX;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    }
+    @keyframes deformX { 
+    0%{transform: none;}
+    25%{transform:scaleX(1.01) skewX(1deg)}
+    50%{transform:none}
+    75%{transform:scaleX(1.01)  skewX(-1deg)}
+    100%{transform: none;}
+    }
+    .deformY{
+    animation-name: deformY;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    }
+    @keyframes deformY { 
+    0%{transform: none;}
+    25%{transform:scaleY(1.01) skewY(1deg)}
+    50%{transform:none}
+    75%{transform:scaleY(1.01)  skewY(-1deg)}
+    100%{transform: none;}
+    }
+    
