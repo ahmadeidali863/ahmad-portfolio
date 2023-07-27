@@ -58,10 +58,10 @@
 .welcomeSection{
   height: 100vh;
   position: relative;
-  top: 65px;
+ // top: 65px;
   
   @media (max-width: 575px) {
-    top: 50px;
+   // top: 50px;
   }
 }
 .active{

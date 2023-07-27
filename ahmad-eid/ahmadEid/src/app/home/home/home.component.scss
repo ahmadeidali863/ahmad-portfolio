@@ -3,6 +3,9 @@
     height: 100%;
    // background-color: #252934;
     background: #000000;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .category{
@@ -101,4 +104,84 @@ canvas {
     75%{transform:scaleY(1.01)  skewY(-1deg)}
     100%{transform: none;}
     }
+    //////////welcome
+    .welcome{
+        width: 60%;
+        height: 70vh;
+        padding: 10px;
+        position: relative;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        border-radius: 30px;
+        gap: 10px;
+        animation: openWelcome 1s ;
+        overflow: hidden;
+    //     .welcomeTop{
+    // background: linear-gradient(45deg,red,blue) border-box;
+    //  -webkit-mask: /*4*/ linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    //  -webkit-mask-composite: xor;
+    //   position: absolute;
+    // top: -2px;
+    // width: 27%;
+    // min-width: 150px;
+    // height: 50px;
+    // left: -2px;
+    // border-top: 3px solid transparent ;
+    // border-left: 3px solid transparent;
+    // border-top-left-radius: 30px;
+    //     }
+    //      .welcomeBottom{
+    //  background: linear-gradient(45deg,red,blue) border-box;
+    //  -webkit-mask: /*4*/ linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    //  -webkit-mask-composite: xor;
+    //  position: absolute;
+    // bottom: -2px;
+    // width: 27%;
+    // min-width: 150px;
+    // height: 50px;
+    // right: -2px;
+    // border-bottom: 3px solid transparent ;
+    // border-right: 3px solid transparent ;
     
+    // border-bottom-right-radius: 30px;
+    //     }
+    }
+    @keyframes openWelcome { 
+        0%{ width: 20%;
+            height: 30vh;}
+      
+        50%{ width: 40%;
+            height: 50vh;}
+
+        100%{ width: 60%;
+            height: 70vh;}
+        }
+
+
+
+        .welcomeImage{
+            padding: 10px;
+    background: #fff;
+    border-radius: 30px;
+    height: 90%;
+    width: 90%;
+    margin: auto;
+        }
+        .welcomeText{
+            padding: 10px;
+            height: 80%;
+            margin: auto;
+            display: grid;
+            grid-template-rows: 1fr 1fr 4fr;
+            gap: 10px;
+
+    .welcomeName{
+        font-size: 50px;
+    color: #fff;
+    font-weight: 600;
+    }
+    .welcomeDescription{
+        color: #f0efefbd;
+    }
+        }
