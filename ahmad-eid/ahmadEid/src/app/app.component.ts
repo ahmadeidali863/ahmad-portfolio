@@ -12,12 +12,12 @@ export class AppComponent {
   //-----------------OpenMobileMenu
     openMobileMenu () {
       if (this.mobileMenu == false) {
-        document.getElementById("menuMobile")!.removeAttribute("class");
-        document.getElementById("menuMobile")?.classList.add("openMenuMobile");
+        document.getElementById("headerMobile")!.removeAttribute("class");
+        document.getElementById("headerMobile")?.classList.add("openMenuMobile");
         this.mobileMenu = true;
       } else {
-        document.getElementById("menuMobile")!.removeAttribute("class");
-        document.getElementById("menuMobile")?.classList.add("closeMenuMobile");
+        document.getElementById("headerMobile")!.removeAttribute("class");
+        document.getElementById("headerMobile")?.classList.add("closeMenuMobile");
         this.mobileMenu = false;
       }
     }

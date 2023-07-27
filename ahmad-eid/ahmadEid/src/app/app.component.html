@@ -3,6 +3,42 @@
     <div class="logo">
     <h2>Ahmad Eid.</h2>
   </div>
+  <div class="sections">
+    <ul>
+      <li><a routerLinkActive="active" [routerLink]="['/Projects']">Projects</a></li>
+      <li><a routerLinkActive="active" [routerLink]="['/Skills']">Skills</a></li>
+      <li><a routerLinkActive="active" [routerLink]="['/Templats']">Templats</a></li>
+      <li><a routerLinkActive="active" [routerLink]="['/AboutMe']">AboutMe</a></li>
+      <li><a routerLinkActive="active" [routerLink]="['/Services']">Services</a></li>
+      <li><a routerLinkActive="active" [routerLink]="['/Contact']">Contact</a></li>
+      <li><a routerLinkActive="active" [routerLink]="['/Certifications']">Certifications</a></li>
+    </ul>
+  </div>
+  <div class="CV">
+<button class="CVButton">Download CV </button>
+<div class="menuIcon">
+  <svg fill="none" (click)="openMobileMenu()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+  </svg>
+  </div>
+  </div>
+
+  <div id="headerMobile" class="closeMenuMobile" >
+  <div class="menuIcon">
+    <svg fill="none" (click)="openMobileMenu()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+    </svg>
+  </div>
+      <ul class="mobile  text-center">
+        <li><a routerLinkActive="active" [routerLink]="['/Projects']">Projects</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/Skills']">Skills</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/Templats']">Templats</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/AboutMe']">AboutMe</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/Services']">Services</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/Contact']">Contact</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/Certifications']">Certifications</a></li>
+        </ul>
+    </div>
 </section>
 <section class="welcomeSection">
 <router-outlet></router-outlet>
