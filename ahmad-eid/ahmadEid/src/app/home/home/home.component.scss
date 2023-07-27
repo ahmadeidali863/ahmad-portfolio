@@ -161,12 +161,17 @@ canvas {
 
 
         .welcomeImage{
-            padding: 10px;
-    background: #fff;
-    border-radius: 30px;
-    height: 90%;
-    width: 90%;
-    margin: auto;
+            background: #fff;
+            border-radius: 20px;
+            height: 90%;
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            img{
+                width: 100%;
+    height: 100%;
+    object-fit: cover;
+            }
         }
         .welcomeText{
             padding: 10px;
@@ -183,5 +188,51 @@ canvas {
     }
     .welcomeDescription{
         color: #f0efefbd;
+    }
+    .welcomeContact{
+
+    
+h6{
+    font-size: 18px;
+    color: #fff;
+    //border-bottom: 2px solid #ffffff90;
+    padding: 6px 0;
+    width: 30%;
+}
+}
+    .welcomeContact ul{
+        list-style-type: none;
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        padding: 0;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        padding: 10px 0;
+    li{
+        cursor: pointer;
+        width: 90%;
+        height: 90%;
+        margin: auto;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+       font-size: 14px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4px;
+      background: rgb(31 29 31);
+        border-radius: 12px;
+        img{
+            width: 40px;
+            //background: #ffffff;
+            
+            padding: 0 10px;
+            border-radius: 10px;
+        }
+    }
     }
         }
