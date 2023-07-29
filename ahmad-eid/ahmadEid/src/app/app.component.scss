@@ -1,9 +1,9 @@
      
   //theme
   //theme Black
-  .themeBlack {
+  // .themeBlack {
    
-  }
+  // }
   //theme light
   .themeLight {
     --italic-font: "EB Garamond", serif;
@@ -64,12 +64,10 @@
    // top: 50px;
   }
 }
-.active{
-  a{
+li.active a{ 
     text-decoration: none;
     color: hsla(0, 0%, 100%, 1);
-    font-size: 14px;
-  }
+    font-size: 14.5px;
 }
 .sections{
   justify-items: center;

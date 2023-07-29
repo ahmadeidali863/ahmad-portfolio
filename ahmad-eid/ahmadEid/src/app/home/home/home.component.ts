@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { HomeRoutingModule } from '../home-routing.module';
 
 @Component({
   selector: 'app-home',
   standalone:true,
   imports:[ 
     CommonModule,
-    HomeRoutingModule],
+    ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
