@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp } from 'firebase/app';
 import { HttpClientModule } from '@angular/common/http';
-
 //import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
 //import { AngularFireStorageModule } from '@angular/fire/compat/storage'; 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -19,12 +18,12 @@ const firebaseConfig = {
   appId: "1:704300199529:web:33d1f799ad58afcd5abcf8"
 };
 
-//export const app = initializeApp(firebaseConfig);
-//export const database = getFirestore(app);
+export const app = initializeApp(firebaseConfig);
+export const database = getFirestore(app);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ export class Project {
     projectDescription: string = "";
     projectImage: string = "";
     projectType: string = "";
+    projectURL: string = "";
+    projectsourceCodeURL: string = "";
     projectTools: string[] = [];
     userName : string = "";
     title: string = "";

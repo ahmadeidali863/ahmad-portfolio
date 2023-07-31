@@ -29,6 +29,7 @@
        
     }
     .skill{
+        min-width: calc(100% - 2.4rem);
         padding: 1.2rem;
         background: rgb(21, 19, 21);
         border-radius: 18px;
@@ -38,6 +39,30 @@
         justify-items: center;
         align-items: center;
         gap: 10px;
+        p{
+           
+            max-height: 75px;
+    overflow: auto;
+        }
+        p:hover::-webkit-scrollbar {
+            width: 2px;
+            display: block;
+          }
+
+          p::-webkit-scrollbar {
+            width: 2px;
+            display: none;
+          }
+          p::-webkit-scrollbar-track {
+            background: #888; 
+          }
+           
+          p::-webkit-scrollbar-thumb {
+            background: #f1f1f1
+            ; 
+          }
+          
+        
 .skillImage{
     
 
@@ -48,7 +73,7 @@ img{width: 60px;
     height: 60px;}
 }
 .skillInfo{
-    padding: 0px 0 20px 0px;
+    //padding: 0px 0 20px 0px;
 h4{
     padding: 7px 0;
 }

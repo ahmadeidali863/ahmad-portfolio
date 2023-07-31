@@ -20,7 +20,9 @@ export class ProjectsComponent {
     userName: '',
     title: '',
     description: '',
-    projectImageFile: undefined
+    projectImageFile: undefined,
+    projectURL: '',
+    projectsourceCodeURL: ''
   }
   
 ngOnInit() {

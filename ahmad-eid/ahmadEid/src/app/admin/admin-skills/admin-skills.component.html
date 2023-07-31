@@ -1,0 +1,107 @@
+<form #skillfrm="ngForm">
+    <div class="formGroup">
+    <div class="formInput">
+      <div class="formLabel">
+        Skill Name
+      </div>
+      <div class="input">
+        <input type="text" class="inputBox" [(ngModel)]="iSkill.skillName" title="Skill Name" 
+               id="iSkillName" ngModel #iSkillName="ngModel" required name="iSkillName" minlength="1" maxlength="50"
+               [ngStyle]="{'border-color': (iSkillName?.touched && iSkillName?.invalid) ? 'var(--color)' : '' }"
+               placeholder="Skill Name" />
+        <span *ngIf="iSkillName?.touched && iSkillName?.invalid" >
+          <span class="text-danger" *ngIf="iSkillName?.touched && iSkillName?.invalid">
+            Please Insert a valid Skill Name
+          </span>
+          <span class="text-danger" *ngIf="iSkill.skillName.length <= 1 || iSkill.skillName.length >= 50">
+            Skill Name is required
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="formInput">
+        <div class="formLabel">
+            Skill Description
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iSkill.skillDescription" title="Skill Description" 
+                 id="iSkillDescription" ngModel #iSkillDescription="ngModel" required name="iSkillDescription" minlength="1"
+                 [ngStyle]="{'border-color': (iSkillDescription?.touched && iSkillDescription?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Skill Description" />
+          <span *ngIf="iSkillDescription?.touched && iSkillDescription?.invalid" >
+            <span class="text-danger" *ngIf="iSkillDescription?.touched && iSkillDescription?.invalid">
+              Please Insert a valid Skill Description
+            </span>
+            <span class="text-danger" *ngIf="iSkill.skillDescription.length <= 1 ">
+              Skill Description is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Skill URL
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iSkill.skillURL" title="Skill URL" 
+                 id="iSkillURL" ngModel #iSkillURL="ngModel" required name="iSkillURL" minlength="1"
+                 [ngStyle]="{'border-color': (iSkillURL?.touched && iSkillURL?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Skill URL" />
+          <span *ngIf="iSkillURL?.touched && iSkillURL?.invalid" >
+            <span class="text-danger" *ngIf="iSkillURL?.touched && iSkillURL?.invalid">
+              Please Insert a valid Skill URL
+            </span>
+            <span class="text-danger" *ngIf="iSkill.skillURL.length <= 1 ">
+              Skill URL is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Skill Type
+        </div>
+        <div class="input">
+            <select class='inputBox'  [(ngModel)]="iSkill.skillType" id='iSkillType' ngModel #iSkillType="ngModel" required name="iSkillType"
+            [ngStyle]="{'border-color': (iSkillType?.touched && iSkillType?.invalid) ? 'var(--color)' : '' ,'color': (iSkillType?.valid) ? '#ffffff' : '#636767' }">
+                <option selected value=''>Skill Type</option>
+                <option value='Technical'>Technical</option>
+                <option value='Interpersonal'>Interpersonal</option>
+                <option value='Industry Knowledge'>Industry Knowledge</option>
+              </select>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            skill Image 
+        </div> 
+         <div class="input">
+          <input type="file" ngModel #uploadImage="ngModel" accept=".png, .jpg, .jpeg" class="imageInputBox" style="display:none"
+                 (change)="onFileSelected($event)" id="uploadImage"
+                 name="uploadImage" />
+          <label for="uploadImage"
+                 [ngStyle]="{'height.px': (url) ? '200' : ''}"
+                 class="imageInputuploadBox"
+                 style="display: grid;
+                 align-items: center;
+                 color: #636767;">
+            <img *ngIf="url" [src]="url" height="200" width="300">
+           <span *ngIf="!url"> Upload Image </span>
+          </label>
+        </div>
+        <div>
+          <div class="progress" [ngStyle]="{'display': this.imageSubmited ? 'grid' : 'none'}">
+          <div class="progress-bar" role="progressbar"[ngStyle]="{'width.%': this.progress ? this.progress : this.progress}">
+          <span class="progress-text">{{this.progress}} %</span>
+          </div>
+          </div>
+      </div>
+        
+      </div>
+    </div>
+    <div class="digitalbutton" >
+        <button type="button" class="digitalbuttonadd" *ngIf="!updateProject" (click)="addProject(skillfrm)">
+            Add Project
+          </button>
+      </div>
+</form>

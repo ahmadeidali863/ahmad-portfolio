@@ -1,0 +1,166 @@
+<form #projectfrm="ngForm">
+    <div class="formGroup">
+    <div class="formInput">
+      <div class="formLabel">
+        Project Name
+      </div>
+      <div class="input">
+        <input type="text" class="inputBox" [(ngModel)]="iProject.projectName" title="ProjectName" 
+               id="iProjectProjectName" ngModel #iProjectProjectName="ngModel" required name="iProjectProjectName" minlength="1" maxlength="50"
+               [ngStyle]="{'border-color': (iProjectProjectName?.touched && iProjectProjectName?.invalid) ? 'var(--color)' : '' }"
+               placeholder="Project Name" />
+        <span *ngIf="iProjectProjectName?.touched && iProjectProjectName?.invalid" >
+          <span class="text-danger" *ngIf="iProjectProjectName?.touched && iProjectProjectName?.invalid">
+            Please Insert a valid Project Name
+          </span>
+          <span class="text-danger" *ngIf="iProject.projectName.length <= 1 || iProject.projectName.length >= 50">
+            Project Name is required
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="formInput">
+        <div class="formLabel">
+            Project Description
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iProject.projectDescription" title="ProjectDescription" 
+                 id="iProjectProjectDescription" ngModel #iProjectProjectDescription="ngModel" required name="iProjectProjectDescription" minlength="3"
+                 [ngStyle]="{'border-color': (iProjectProjectDescription?.touched && iProjectProjectDescription?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Project Description" />
+          <span *ngIf="iProjectProjectDescription?.touched && iProjectProjectDescription?.invalid">
+            <span class="text-danger" *ngIf="iProjectProjectDescription?.touched && iProjectProjectDescription?.invalid">
+              Please Insert a valid Project Description
+            </span>
+            <span class="text-danger" *ngIf="iProject.projectDescription.length <= 3">
+           Project Description is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Project URL
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iProject.projectURL" title="ProjectURL"
+                 id="iProjectProjectURL" ngModel #iProjectProjectURL="ngModel" required name="iProjectProjectURL" minlength="1"
+                 [ngStyle]="{'border-color': (iProjectProjectURL?.touched && iProjectProjectURL?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Project URL" />
+          <span *ngIf="iProjectProjectURL?.touched && iProjectProjectURL?.invalid">
+            <span class="text-danger" *ngIf="iProjectProjectURL?.touched && iProjectProjectURL?.invalid">
+              Please Insert a valid Project URL
+            </span>
+            <span class="text-danger" *ngIf="iProject.title.length <= 1">
+                 Project URL is Required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Project Type
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iProject.projectType" title="ProjectType" 
+                 id="iProjectProjectType" ngModel #iProjectProjectType="ngModel" required name="iProjectProjectType" minlength="1" maxlength="50"
+                 [ngStyle]="{'border-color': (iProjectProjectType?.touched && iProjectProjectType?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Project Type" />
+          <span *ngIf="iProjectProjectType?.touched && iProjectProjectType?.invalid" >
+            <span class="text-danger" *ngIf="iProjectProjectType?.touched && iProjectProjectType?.invalid">
+              Please Insert a valid Project Type
+            </span>
+            <span class="text-danger" *ngIf="iProject.title.length <= 1 || iProject.title.length >= 50">
+                Project Type Is Required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Project Source Code URL
+        </div>
+        <div class="input">
+            <!--pattern="[A-Za-z0-9_\-\+\ ]{1,}"-->
+          <input type="text" class="inputBox" [(ngModel)]="iProject.projectsourceCodeURL" title="ProjectSourceCodeURL" 
+                 id="iProjectProjectSourceCodeURL" ngModel #iProjectProjectSourceCodeURL="ngModel" required name="iProjectProjectSourceCodeURL" minlength="1"
+                 [ngStyle]="{'border-color': (iProjectProjectSourceCodeURL?.touched && iProjectProjectSourceCodeURL?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Project Source Code URL" />
+          <span *ngIf="iProjectProjectSourceCodeURL?.touched && iProjectProjectSourceCodeURL?.invalid" >
+            <span class="text-danger" *ngIf="iProjectProjectSourceCodeURL?.touched && iProjectProjectSourceCodeURL?.invalid">
+              Please Insert a valid Project Source Code URL
+            </span>
+            <span class="text-danger" *ngIf="iProject.title.length <= 1">
+                Project Source Code URL Is Required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Project Tools/Skills
+        </div>
+        <div class="input">
+            <!--pattern="[A-Za-z0-9_\-\+\ ]{1,}"-->
+          <input type="text" class="inputBox" [(ngModel)]="tools" title="tools" 
+          id="tool" ngModel #tool="ngModel" required name="tool" minlength="1"
+                 [ngStyle]="{'border-color': (tool?.touched && tool?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Add (,) after every Tool or skill" />
+          <span *ngIf="tool?.touched && tool?.invalid" >
+            <span class="text-danger" *ngIf="tool?.touched && tool?.invalid">
+              Please Insert a valid Project Tools/Skills
+            </span>
+            <span class="text-danger" *ngIf="tools.length <= 1">
+                Project Tools/Skills Is Required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+      <div class="formLabel">
+        Image :
+      </div> 
+       <div class="input">
+        <input type="file" ngModel #uploadImage="ngModel" accept=".png, .jpg, .jpeg" class="imageInputBox" style="display:none"
+               (change)="onFileSelected($event)" id="uploadImage"
+               name="uploadImage" />
+        <label for="uploadImage"
+               [ngStyle]="{'height.px': (url) ? '200' : ''}"
+               class="imageInputuploadBox"
+               style="display: grid;
+               align-items: center;
+               color: #636767;">
+          <img *ngIf="url" [src]="url" height="200" width="300">
+         <span *ngIf="!url"> UploadImage </span>
+        </label>
+      </div>
+      <div>
+        <div class="progress" [ngStyle]="{'display': this.imageSubmited ? 'grid' : 'none'}">
+        <div class="progress-bar" role="progressbar"[ngStyle]="{'width.%': this.progress ? this.progress : this.progress}">
+        <span class="progress-text">{{this.progress}} %</span>
+        </div>
+        </div>
+    </div>
+      
+    </div>
+    
+</div>
+<div class="digitalbutton" >
+    <button type="button" class="digitalbuttonadd" *ngIf="!updateProject" (click)="addProject(projectfrm)">
+        Add Project
+      </button>
+    
+      <button type="button" class="digitalbuttonadd" *ngIf="updateProject" (click)="updateProjects(projectfrm)">
+        Update Project
+      </button>
+      <button type="button" class="digitalbuttonadd" (click)="clear()">
+        Clear
+      </button>
+  </div>
+  </form>
+  <div class="designsbox" *ngFor="let item of this.projects">
+    <div class="designsboximg" *ngFor="let items of item" (click)="updateActive(items)">
+              <img width="75" height="75" src="{{items.projectImage}}" />
+      </div>
+  
+  </div>

@@ -1,138 +1,57 @@
 <section class="skills">
+   <!-- <pre style="color: #fff;">{{ this.skills | json}}</pre> -->
     <div class="skillContain">
     <h2>Technical Skills</h2>
-        <div class="skillsContain">
-          <div class="skill">
+        <div class="skillsContain" *ngFor="let item of this.skills">
+          <div class="skill" *ngFor="let items of item">
+            <ng-container *ngIf="items.skillType == 'Technical'">
             <div class="skillImage">
-               <img src="../assets/github.png">
+               <img src="{{items.skillImage}}">
             </div>
             <div class="skillInfo">
-               <h4>Figma</h4>
-               <p>Embed live Figma prototypes onto your page.</p>
+               <h4>{{items.skillName}}</h4>
+               <p>{{items.skillDescription}}.</p>
             </div>
+         </ng-container>
           </div>
-          <div class="skill">
-            <div class="skillImage">
-               <img src="../assets/github.png">
-            </div>
-            <div class="skillInfo">
-               <h4>Figma</h4>
-               <p>Embed live Figma prototypes onto your page.</p>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skillImage">
-               <img src="../assets/github.png">
-            </div>
-            <div class="skillInfo">
-               <h4>Figma</h4>
-               <p>Embed live Figma prototypes onto your page.</p>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skillImage">
-               <img src="../assets/github.png">
-            </div>
-            <div class="skillInfo">
-               <h4>Figma</h4>
-               <p>Embed live Figma prototypes onto your page.</p>
-            </div>
-          </div>
+          
         </div>
     
     </div>
     <div class="skillContain">
     <h2>Interpersonal Skills</h2>
 
-        <div class="skillsContain">
-            <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
+        <div class="skillsContain" *ngFor="let item of this.skills">
+            <div class="skill" *ngFor="let items of item">
+               <ng-container *ngIf="items.skillType == 'Interpersonal'">
+                  <div class="skillImage">
+                     <img src="{{items.skillImage}}">
+                  </div>
+                  <div class="skillInfo">
+                     <h4>{{items.skillName}}</h4>
+                     <p>{{items.skillDescription}}.</p>
+                  </div>
+               </ng-container>
               </div>
         </div>
     
     </div>
-    <div class="skillContain">
+    <div class="skillContain" >
     <h2>Industry Knowledge</h2>
 
-        <div class="skillsContain">
-            <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
+        <div class="skillsContain" *ngFor="let item of this.skills">
+            <div class="skill" *ngFor="let items of item">
+               <ng-container *ngIf="items.skillType == 'Industry Knowledge'">
+                  <div class="skillImage">
+                     <img src="{{items.skillImage}}">
+                  </div>
+                  <div class="skillInfo">
+                     <h4>{{items.skillName}}</h4>
+                     <p>{{items.skillDescription}}.</p>
+                  </div>
+               </ng-container>
               </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
-              <div class="skill">
-                <div class="skillImage">
-                   <img src="../assets/github.png">
-                </div>
-                <div class="skillInfo">
-                   <h4>Figma</h4>
-                   <p>Embed live Figma prototypes onto your page.</p>
-                </div>
-              </div>
+            
         </div>
     
     </div>
