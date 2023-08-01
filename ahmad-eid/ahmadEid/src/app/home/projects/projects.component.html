@@ -1,6 +1,40 @@
-<section class="projects ">
+<!-- <section class="projects ">
     <div class="projectContain">
     <div class="projectsContain">
+      <div class="projectChossen">
+        <div class="select">
+            <select (change)="onProjectTypeSelected($event)">
+                <option value="" [selected]>Select a project type</option>
+                <option  *ngFor="let projectType of getProjectTypes()" [value]="projectType">{{ projectType }}</option>
+              </select>
+            <div class="gridContainer" *ngIf="selectedProjects.length > 0">
+                <div class="gridItem active" (click)="clickProject()" *ngFor="let project of selectedProjects">
+                  <div (click)="onProjectClick(project)">{{ project.projectName }}</div>
+                </div>
+                <div class="gridItem active" (click)="clickProject()" >
+                  <div >sdfgsdfg</div>
+                </div>
+                <div class="gridItem active" (click)="clickProject()" >
+                  <div >sdfgsdfg</div>
+                </div>
+                <div class="gridItem active" (click)="clickProject()" >
+                  <div >sdfgsdfg</div>
+                </div>
+                <div class="gridItem active" (click)="clickProject()" >
+                  <div >sdfgsdfg</div>
+                </div>
+                <div class="gridItem active" (click)="clickProject()" >
+                  <div >sdfgsdfg</div>
+                </div>
+                <div class="gridBackground"></div>
+              </div>
+            
+  
+           
+          </div>
+
+
+        </div>
         <div class="projectInfo">
           <div style="position: relative;">
             <div class="projectName">  <h2>{{this.iProject.projectName}}</h2></div>
@@ -11,43 +45,53 @@
 
         </div>
           </div>
-            <div class="projectChossen">
-                <div class="select">
-                    <select>
-                        <option value="0" [selected]>agadfg</option>
-                        <option>dfsgdfg</option>
-                        <option>sdgsdfg</option>
-                        <option>ghjg</option>
-                        <option>fhk</option>
-                      </select>
-                    <div class="gridContainer">
-                        <div class="gridItem active" (click)="clickProject()">Kelsey Heinrichs</div>
-                        <div class="gridItem" (click)="clickProject()">Colin Treseler</div>
-                        <div class="gridItem" (click)="clickProject()">Matthew Chung</div>
-                        <div class="gridItem" (click)="clickProject()">D Story</div>
-                        <div class="gridItem" (click)="clickProject()">Melissa Fallon</div>
-                        <div class="gridBackground"></div>
-                      </div>
-                    
-                    <!-- <ul>
-                        <li>
-                         
-                        </li>
-                        <li>agadfg</li>
-                        <li>dsfgsdfg</li>
-                        <li>sdfgdsfg</li>
-                        <li>dsfgdsfg</li>
-                    </ul> -->
-                   
-                  </div>
-                </div>
+          
         </div>
         <div class="projectPreview">
-        <div class="projectImage"><img src="../assets/switzerland-zurich-river-city-boats-town-hall-morning.jpg" width="300" height="300"></div>
+        <div class="projectImage"><img src="{{this.iProject.projectImage}}" width="300" height="300"></div>
         </div>
 
        
     </div>
     </div>
 </section>
-
+ -->
+<section class="projectSection">
+  <div class="sectionProjectContainer">
+    <div class="SectionTitle">
+      <h1 class="Title">Explore what's possible</h1> 
+      <div class="select">
+        <select (change)="onProjectTypeSelected($event)">
+          <option value="" hidden disabled selected >Click to Select a project type</option>
+          <option  *ngFor="let projectType of getProjectTypes()" [value]="projectType">{{ projectType }}</option>
+        </select>
+       
+      </div>
+    </div>
+    <div class="projects" >
+      <div class="projectsContainer">
+    <ng-container  *ngIf="selectedProjects.length > 0;else hahaha">
+      
+        <div class="project" *ngFor="let project of selectedProjects">
+          <div class="projectContainer">
+            <h4 class="projectName">{{project.projectName}}</h4>
+            <p class="projectDescription">“{{project.projectDescription}}”</p>
+            <ul class="projectTools">
+              <li class="projectTool" *ngFor="let item of project.projectTools">{{item}}</li>
+            </ul>
+            <div class="projectAccess" >
+              <a class="projectAccessLink" href="{{project.projectURL}}" target="_blank">Websit Like *</a>
+            </div>
+            <div class="projectImage">
+              <a href="{{project.projectURL}}" target="_blank">
+                <img src="{{project.projectImage}}" width="300" height="300">
+              </a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #hahaha></ng-template>
+      </div>
+    </div>
+  </div>
+</section>

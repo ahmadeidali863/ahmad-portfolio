@@ -3,8 +3,10 @@
 .skills{
     width: 100%;
     min-height: 100vh;
-    padding: 20vh 0;
-  
+    padding: 10vh 0;
+    @media (min-width: 800px){
+        padding: 20vh 0;
+        }
     .skillsContain{
         width: 100%;
         margin: 3rem 0;
@@ -35,8 +37,6 @@
         border-radius: 18px;
         display: flex;
         height: 100px;
-        justify-content: center;
-        justify-items: center;
         align-items: center;
         gap: 10px;
         p{
@@ -83,3 +83,46 @@ p{
 }
     }
 }
+.loadingAnimation{
+    width: 100%;
+    min-height: 100vh;
+  
+}
+.animatedBoxs{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    justify-items: start;
+    grid-template-columns: 1fr ;
+    @media (min-width: 800px){
+        grid-template-columns: 1fr 1fr ;
+        }
+    @media (min-width: 1000px){
+        grid-template-columns: 1fr 1fr 1fr;
+        }
+    gap: 1rem;
+    .animatedBox {
+        min-width: calc(100% - 2.4rem);
+        padding: 1.2rem;
+        background: rgb(21, 19, 21);
+        border-radius: 18px;
+        display: flex;
+        height: 100px;
+        align-items: center;
+        gap: 10px;
+        //margin: 10px;
+        animation: pulse 1s infinite alternate;
+      }
+}
+
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

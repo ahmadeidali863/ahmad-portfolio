@@ -1,16 +1,15 @@
 <section class="skills">
-   <!-- <pre style="color: #fff;">{{ this.skills | json}}</pre> -->
-    <div class="skillContain">
+    <div class="skillContain" *ngIf="dataLoaded; else loadingAnimation">
     <h2>Technical Skills</h2>
-        <div class="skillsContain" *ngFor="let item of this.skills">
-          <div class="skill" *ngFor="let items of item">
-            <ng-container *ngIf="items.skillType == 'Technical'">
+        <div class="skillsContain">
+          <div class="skill" *ngFor="let item of this.technicalSkills">
+            <ng-container *ngIf="item.skillType == 'Technical'">
             <div class="skillImage">
-               <img src="{{items.skillImage}}">
+               <img src="{{item.skillImage}}">
             </div>
             <div class="skillInfo">
-               <h4>{{items.skillName}}</h4>
-               <p>{{items.skillDescription}}.</p>
+               <h4>{{item.skillName}}</h4>
+               <p>{{item.skillDescription}}.</p>
             </div>
          </ng-container>
           </div>
@@ -18,41 +17,62 @@
         </div>
     
     </div>
-    <div class="skillContain">
-    <h2>Interpersonal Skills</h2>
+    <ng-template #loadingAnimation>
+      <div class="loadingAnimation">
+      <div class="animatedBoxs">
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+      <div class="animatedBox"></div>
+   </div>
+   </div>
+    </ng-template>
 
-        <div class="skillsContain" *ngFor="let item of this.skills">
-            <div class="skill" *ngFor="let items of item">
-               <ng-container *ngIf="items.skillType == 'Interpersonal'">
+    <div class="skillContain" *ngIf="dataLoaded; else loadingAnimation">
+    <h2>Interpersonal Skills</h2>
+        <div class="skillsContain" >
+            <div class="skill" *ngFor="let item of  this.interpersonalSkills">
+               <ng-container *ngIf="item.skillType == 'Interpersonal'">
                   <div class="skillImage">
-                     <img src="{{items.skillImage}}">
+                     <img src="{{item.skillImage}}">
                   </div>
                   <div class="skillInfo">
-                     <h4>{{items.skillName}}</h4>
-                     <p>{{items.skillDescription}}.</p>
+                     <h4>{{item.skillName}}</h4>
+                     <p>{{item.skillDescription}}.</p>
                   </div>
                </ng-container>
               </div>
         </div>
     
     </div>
-    <div class="skillContain" >
+    <div class="skillContain" *ngIf="dataLoaded; else loadingAnimation" >
     <h2>Industry Knowledge</h2>
 
-        <div class="skillsContain" *ngFor="let item of this.skills">
-            <div class="skill" *ngFor="let items of item">
-               <ng-container *ngIf="items.skillType == 'Industry Knowledge'">
+         <div class="skillsContain" >
+            <div class="skill" *ngFor="let item of this.industryKnowledgeSkills">
+               <ng-container *ngIf="item.skillType == 'Industry Knowledge'">
                   <div class="skillImage">
-                     <img src="{{items.skillImage}}">
+                     <img src="{{item.skillImage}}">
                   </div>
                   <div class="skillInfo">
-                     <h4>{{items.skillName}}</h4>
-                     <p>{{items.skillDescription}}.</p>
+                     <h4>{{item.skillName}}</h4>
+                     <p>{{item.skillDescription}}.</p>
                   </div>
                </ng-container>
               </div>
             
-        </div>
+        </div> 
     
     </div>
 </section>
