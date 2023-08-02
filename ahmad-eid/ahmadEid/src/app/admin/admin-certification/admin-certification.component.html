@@ -1,1 +1,106 @@
-<p>admin-certification works!</p>
+<form #skillfrm="ngForm">
+    <div class="formGroup">
+    <div class="formInput">
+      <div class="formLabel">
+        Certification Name
+      </div>
+      <div class="input">
+        <input type="text" class="inputBox" [(ngModel)]="iCertification.certificationName" title="Certification Name" 
+               id="iCertificationName" ngModel #iCertificationName="ngModel" required name="iCertificationName" minlength="1" maxlength="50"
+               [ngStyle]="{'border-color': (iCertificationName?.touched && iCertificationName?.invalid) ? 'var(--color)' : '' }"
+               placeholder="Certification Name" />
+        <span *ngIf="iCertificationName?.touched && iCertificationName?.invalid" >
+          <span class="text-danger" *ngIf="iCertificationName?.touched && iCertificationName?.invalid">
+            Please Insert a valid Certification Name
+          </span>
+          <span class="text-danger" *ngIf="iCertification.certificationName.length <= 1 || iCertification.certificationName.length >= 50">
+            Certification Name is required
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="formInput">
+        <div class="formLabel">
+            Certification Description
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iCertification.certificationDescription" title="Certification Description" 
+                 id="iCertificationDescription" ngModel #iCertificationDescription="ngModel" required name="iCertificationDescription" minlength="1"
+                 [ngStyle]="{'border-color': (iCertificationDescription?.touched && iCertificationDescription?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Certification Description" />
+          <span *ngIf="iCertificationDescription?.touched && iCertificationDescription?.invalid" >
+            <span class="text-danger" *ngIf="iCertificationDescription?.touched && iCertificationDescription?.invalid">
+              Please Insert a valid Certification Description
+            </span>
+            <span class="text-danger" *ngIf="iCertification.certificationDescription.length <= 1 ">
+                Certification Description is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Certification URL
+        </div>
+        <div class="input">
+          <input type="text" class="inputBox" [(ngModel)]="iCertification.certificationURL" title="Certification URL" 
+                 id="iCertificationURL" ngModel #iCertificationURL="ngModel" required name="iCertificationURL" minlength="1"
+                 [ngStyle]="{'border-color': (iCertificationURL?.touched && iCertificationURL?.invalid) ? 'var(--color)' : '' }"
+                 placeholder="Certification URL" />
+          <span *ngIf="iCertificationURL?.touched && iCertificationURL?.invalid" >
+            <span class="text-danger" *ngIf="iCertificationURL?.touched && iCertificationURL?.invalid">
+              Please Insert a valid Certification URL
+            </span>
+            <span class="text-danger" *ngIf="iCertification.certificationURL.length <= 1 ">
+                Certification URL is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Certification Type
+        </div>
+        <div class="input">
+            <select class='inputBox'  [(ngModel)]="iCertification.certificationType" id='iCertificationType' ngModel #iCertificationType="ngModel" required name="iCertificationType"
+            [ngStyle]="{'border-color': (iCertificationType?.touched && iCertificationType?.invalid) ? 'var(--color)' : '' ,'color': (iCertificationType?.valid) ? '#ffffff' : '#636767' }">
+                <option selected value=''>Certification Type</option>
+                <option value='Certification'>Certification</option>
+                <option value='Course'>Course</option>
+              </select>
+        </div>
+      </div>
+      <div class="formInput">
+        <div class="formLabel">
+            Certification Image 
+        </div> 
+         <div class="input">
+          <input type="file" ngModel #uploadImage="ngModel" accept=".png, .jpg, .jpeg" class="imageInputBox" style="display:none"
+                 (change)="onFileSelected($event)" id="uploadImage"
+                 name="uploadImage" />
+          <label for="uploadImage"
+                 [ngStyle]="{'height.px': (url) ? '200' : ''}"
+                 class="imageInputuploadBox"
+                 style="display: grid;
+                 align-items: center;
+                 color: #636767;">
+            <img *ngIf="url" [src]="url" height="200" width="300">
+           <span *ngIf="!url"> Upload Image </span>
+          </label>
+        </div>
+        <div>
+          <div class="progress" [ngStyle]="{'display': this.imageSubmited ? 'grid' : 'none'}">
+          <div class="progress-bar" role="progressbar"[ngStyle]="{'width.%': this.progress ? this.progress : this.progress}">
+          <span class="progress-text">{{this.progress}} %</span>
+          </div>
+          </div>
+      </div>
+        
+      </div>
+    </div>
+    <div class="digitalbutton" >
+        <button type="button" class="digitalbuttonadd" *ngIf="!updateProject" (click)="addProject(skillfrm)">
+            Add Certification
+          </button>
+      </div>
+</form>

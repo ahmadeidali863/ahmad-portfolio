@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'skills',
     title:'Skills',
     loadComponent: () => import('../admin/admin-skills/admin-skills.component').then(m => m.AdminSkillsComponent)
+    },
+   {
+    path: 'certifications',
+    title:'Certifications',
+    loadComponent: () => import('../admin/admin-certification/admin-certification.component').then(m => m.AdminCertificationComponent)
     }]
 }
 ];

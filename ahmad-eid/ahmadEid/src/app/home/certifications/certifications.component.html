@@ -1,0 +1,33 @@
+<section class="certificationsSection">
+    <div class="certificationsSectionContainer">
+    <div class="certificationsSectionTitle">
+     <h2>My Certifications</h2>
+     <p>Dive into my certifications, showcasing my commitment to continuous learning and expertise in various domains.</p>
+    </div>
+    <div class="certifications" *ngIf="dataLoaded; else loadingAnimation">
+        <div class="certification" *ngFor="let item of this.certifications">
+            <div class="certificationInfo">
+            <h4 class="certificationName">
+                {{item.certificationName}}</h4>    
+            <p class="certificationDescription">"{{item.certificationDescription}}"</p>    
+            </div>
+            <a class="certificationImage" href="{{item.certificationURL}}"  target="_blank"><img src="{{item.certificationImage}}" style="object-fit:cover; height:300px; width:100%;"  loading="lazy"> </a>
+                    </div>
+                  
+    </div>
+    <ng-template #loadingAnimation>
+        <div class="loadingAnimation">
+        <div class="animatedBoxs">
+        <div class="animatedBox"></div>
+        <div class="animatedBox"></div>
+        <div class="animatedBox"></div>
+        <div class="animatedBox"></div>
+        <div class="animatedBox"></div>
+        <div class="animatedBox"></div>
+        <div class="animatedBox"></div>
+       
+     </div>
+     </div>
+      </ng-template>
+</div>
+</section>

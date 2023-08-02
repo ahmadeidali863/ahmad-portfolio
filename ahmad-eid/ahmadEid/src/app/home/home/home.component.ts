@@ -10,6 +10,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
+
 export class HomeComponent {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef;
 
