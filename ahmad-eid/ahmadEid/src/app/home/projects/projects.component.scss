@@ -190,18 +190,22 @@
 
 .SectionTitle{
     display: grid;
-    width: 90%;
+    width: 100%;
+    margin-bottom: 1rem;
+    animation: titleanimation 0.8s;
     @media (min-width: 1000px){
+        width: 90%;
+        margin-bottom: 3rem;
         grid-template-columns: 3fr 1fr;
         }
         grid-template-columns: 1fr;
         gap: 15px;
-    margin-bottom: 3rem;
+   
 .Title{
     color: #fff;
     align-items: center;
     display: grid;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   
     @media (min-width: 1000px){
         padding: 0 0 0 10px;
@@ -238,7 +242,10 @@
     width: 100%;
     height: 100%;
     .projectsContainer{
-        padding: 10px;
+        @media (min-width: 1000px){
+            padding: 10px;
+            }
+       
         display: grid;
         grid-template-columns: 1fr;
         @media (min-width: 800px){
@@ -255,6 +262,7 @@
 .project{
     background-color: rgb(21, 19, 21);
     border-radius: 1rem;
+    animation: projectanimation 0.8s;
     .projectContainer{
         padding: 1rem;
         color:#fff;
@@ -334,3 +342,26 @@ a{    height: 100%;
     display: grid;
     text-decoration: none;
 }
+
+@keyframes projectanimation {
+    0% {
+        margin-top: 50px ;
+      opacity: 0;
+    } 50%{
+        opacity: 0;
+    }
+    100% {
+        margin-top: 0 ;
+      opacity: 1;
+    }
+  }
+  @keyframes titleanimation {
+    0% {
+        margin-left: -50px ;
+      opacity: 0;
+    }
+    100% {
+        margin-top: 0 ;
+      opacity: 1;
+    }
+  }

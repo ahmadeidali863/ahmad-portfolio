@@ -56,12 +56,18 @@ img{
 
 @keyframes openContactBoxAnimation { 
     0%{ 
+        opacity: 0;
         margin-top: 15vh;
        
     }
     100%{    margin-top: 0;
+        opacity: 1;
         }
     }
 
-
-    
+a{
+   color: #fff;
+}
+    // @media (min-width: 1000px){
+    //     width: 80%;
+    //     }

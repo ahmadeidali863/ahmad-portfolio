@@ -13,6 +13,7 @@ import { database } from 'src/app/app.module';
 })
 export class ProjectsComponent {
   projects: Project[] = []
+  firstProjects: Project[] = []
   public iProject: Project = {
     id: 0,
     projectName: '',
@@ -32,6 +33,7 @@ export class ProjectsComponent {
 
 getdata() {
   this.projects = [];
+  this.firstProjects = [];
   this.projectTypeGroups = {}; 
 
   getDocs(this.collectionRef)
@@ -39,14 +41,18 @@ getdata() {
       querySnapshot.forEach((doc) => {
         const projectData = doc.data() as Project;
         this.projects.push(projectData);
+        if(projectData.projectType == 'Web Development'){
+          this.firstProjects.push(projectData)
+        }
         if (!this.projectTypeGroups[projectData.projectType]) {
           this.projectTypeGroups[projectData.projectType] = [projectData];
+          
         } else {
           this.projectTypeGroups[projectData.projectType].push(projectData);
         }
        
       });
-     
+    
     })
     .catch((err) => {
       alert(err);
@@ -59,21 +65,23 @@ getProjectTypes(): string[] {
 }
 
 onProjectTypeSelected(event: any) {
-
-  const selectedProjectType = event.target.value;
+    const selectedProjectType = event.target.value;
   if (selectedProjectType) {
     this.selectedProjects = this.projectTypeGroups[selectedProjectType];
-  } else {
+  }else {
     this.selectedProjects = [];
   }
+  
 //this.clickProject();
 
 }
 
 ngOnInit() {
+  this.getdata();
+
     setTimeout(() => {
-      this.getdata();
     }, 200);
+
    // this.clickProject();
 }
 

@@ -1,6 +1,6 @@
 <div [ngClass]="{'themeBlack': theme == 'themeBlack', 'themeLight': theme == 'themeLight'}">
   <section class="scrollable header" [class.scrolled]="scrolled">
-    <div class="logo" [routerLink]="['/']">
+    <div class="logo" [routerLink]="['/']" style="cursor: pointer;">
     <h2>Ahmad Eid.</h2>
   </div>
   <div class="sections">
@@ -9,9 +9,9 @@
       <li routerLinkActive="active" [routerLink]="['/skills']"><a >Skills</a></li>
       <!-- <li><a routerLinkActive="active" [routerLink]="['/Templats']">Templats</a></li>
       <li><a routerLinkActive="active" [routerLink]="['/Services']">Services</a></li> -->
-      <li><a routerLinkActive="active" [routerLink]="['/certifications']">Certifications</a></li>
+      <li routerLinkActive="active" [routerLink]="['/certifications']"><a >Certifications</a></li>
       <!-- <li><a routerLinkActive="active" [routerLink]="['/AboutMe']">AboutMe</a></li> -->
-      <li><a routerLinkActive="active" [routerLink]="['/contact']">Contact</a></li>
+      <li routerLinkActive="active" [routerLink]="['/contact']"><a >Contact</a></li>
     </ul>
   </div>
   <div class="CV" >
@@ -29,14 +29,14 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
     </svg>
   </div>
-      <ul class="mobile  text-center">
-        <li><a routerLinkActive="active" [routerLink]="['/Projects']">Projects</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/Skills']">Skills</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/Templats']">Templats</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/AboutMe']">AboutMe</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/Services']">Services</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/Contact']">Contact</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/Certifications']">Certifications</a></li>
+      <ul class="mobile  text-center" (click)="openMobileMenu()">
+        <li><a routerLinkActive="active" [routerLink]="['/projects']">Projects</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/skills']">Skills</a></li>
+        <!-- <li><a routerLinkActive="active" [routerLink]="['/templats']">Templats</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/aboutMe']">AboutMe</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/services']">Services</a></li> -->
+        <li><a routerLinkActive="active" [routerLink]="['/certifications']">Certifications</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/contact']">Contact</a></li>
         </ul>
     </div>
 </section>

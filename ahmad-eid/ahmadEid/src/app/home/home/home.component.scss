@@ -107,16 +107,32 @@ canvas {
     //////////welcome
     .welcome{
         width: 60%;
-        height: 70vh;
         padding: 10px;
         position: relative;
+        display:none;
         margin: auto;
-        display: grid;
+       // display: grid;
         grid-template-columns: 1fr 2fr;
         border-radius: 30px;
         gap: 10px;
         animation: openWelcome 1s ;
+        @media (max-width: 600px){
+            animation: openWelcomeMobile 1s ;
+            }
         overflow: hidden;
+        @media (max-width: 600px){
+            width: 80%;
+            grid-template-columns: 1fr;
+            top: 13vh;
+            .welcomeText{
+                margin: 0;
+                .welcomeName{
+                    font-size: 36px;
+                }
+            }
+            }
+      
+
     //     .welcomeTop{
     // background: linear-gradient(45deg,red,blue) border-box;
     //  -webkit-mask: /*4*/ linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
@@ -148,13 +164,32 @@ canvas {
     //     }
     }
     @keyframes openWelcome { 
-        0%{ width: 20%;
-            height: 30vh;}
+        0%{ opacity: 0;
+            top: 10vh;
+            }
       
       
 
-        100%{ width: 60%;
-            height: 70vh;}
+        100%{ 
+            top: 0;
+            opacity: 1;
+            
+        }
+
+        }
+    @keyframes openWelcomeMobile { 
+        0%{ opacity: 0;
+            top: 20vh;
+            }
+      
+      
+
+        100%{ 
+            top: 13vh;
+            opacity: 1;
+        
+        }
+
         }
 
 
@@ -177,7 +212,10 @@ canvas {
             height: 80%;
             margin: auto;
             display: grid;
-            grid-template-rows: 1fr 1fr 4fr;
+            @media (min-width: 600px){
+                 grid-template-rows: 1fr 1fr 4fr;
+                    }
+          
             gap: 10px;
 
     .welcomeName{
@@ -186,7 +224,8 @@ canvas {
     font-weight: 600;
     }
     .welcomeDescription{
-        color: #f0efefbd;
+        color: #f0efefbd;font-size: 14px;
+        line-height: 21px;
     }
     .welcomeContact{
 
@@ -203,34 +242,33 @@ h6{
         list-style-type: none;
         color: #fff;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 14px;
         padding: 0;
+        width: 100%;
         align-items: center;
-        width: 80%;
-        height: 100%;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
         padding: 10px 0;
+        @media (min-width: 600px){
+            grid-template-columns: 1fr 1fr;
+            }
     li{
         cursor: pointer;
-        width: 90%;
-        height: 90%;
+        width: 100%;
+        height: 75px;
         margin: auto;
         justify-content: center;
         justify-items: center;
         align-items: center;
-       font-size: 14px;
+        font-size: 19px;
         display: grid;
         grid-template-columns: 1fr 2fr;
-        gap: 4px;
-      background: rgb(31 29 31);
+        /* gap: 4px; */
+        background: rgb(31, 29, 31);
         border-radius: 12px;
         img{
-            width: 40px;
-            //background: #ffffff;
-            
+            width: 75px;
+            height: 75px;
             padding: 0 10px;
-            border-radius: 10px;
         }
     }
     }
@@ -238,4 +276,68 @@ h6{
 
 
         ///////////
+      .WelcomeMyPortfolio{
+        position: fixed;
+        background-color: rgb(21 19 21/1);
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+       
+        transition: background-color 1s ease-in-out;
+      }
+      .WelcomeMyPortfolio {
+        width: 100%;
+        height: 100vh;
+       
       
+        .text-container {
+          .text {
+            font-size: 2rem;
+            color: white;
+            opacity: 0;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+          }
+      
+          .text1 {
+            animation-name: fadeInAndOut1;
+          }
+      
+          .text2 {
+            animation-name: fadeInAndOut2;
+          }
+        }
+      }
+      
+      @keyframes fadeInAndOut1 {
+        0%, 100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeInAndOut2 {
+        0%, 100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+
+      .headerBlock{
+        height: 65px;
+    position: fixed;
+    top: 0;
+    background: #000000;
+    z-index: 8;
+    width: 100%;
+    transition: 0.5s;
+      }

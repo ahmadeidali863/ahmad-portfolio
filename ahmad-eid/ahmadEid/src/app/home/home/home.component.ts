@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +12,47 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 
 
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit, OnInit {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef;
+  @ViewChild('welcome', { static: true }) welcomeRef!: ElementRef;
+  @ViewChild('welcomeTwo', { static: true }) welcomeTwoRef!: ElementRef;
+  @ViewChild('headerBlock', { static: true }) headerBlockRef!: ElementRef;
 
   private canvas: HTMLCanvasElement | undefined;
   private context: CanvasRenderingContext2D | undefined;
   private bubbles: Bubble[] = [];
-  private readonly maxBubbles = 250;
-   
+  private readonly maxBubbles = 300;
+  showText1 = false;
+  showText2 = false;
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.showText1 = true;
+    }, 1000);
+
+    setTimeout(() => {
+      this.showText1 = false;
+      this.showText2 = true;
+    }, 3000);
+
+    setTimeout(() => {
+      this.welcomeRef.nativeElement.style.backgroundColor = 'transparent';
+      
+    }, 5000);
+    setTimeout(() => {
+      this.welcomeRef.nativeElement.style.display = 'none';
+      
+      this.headerBlockRef.nativeElement.style.opacity = '0';
+    }, 6000);
+    setTimeout(() => {
+      this.headerBlockRef.nativeElement.style.display = 'none';
+      this.welcomeTwoRef.nativeElement.style.opacity = '1';
+      this.welcomeTwoRef.nativeElement.style.display = 'grid';
+  
+    }, 6500);
+  }
   ngOnInit() {
+    
     this.canvas = this.canvasRef.nativeElement;
     this.context = this.canvas!.getContext('2d')!;
     this.canvas!.width = window.innerWidth;
@@ -38,13 +69,14 @@ export class HomeComponent {
         Math.random() * (this.canvas!.height - 100) + 50,
         Math.random() * 20 + 10
       );
+  
       this.bubbles.push(bubble);
     }
   }
 
   private animate() {
     this.context!.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
-
+    
     this.bubbles.forEach(bubble => {
       bubble.update();
       bubble.updateOpacity();
@@ -63,6 +95,9 @@ export class HomeComponent {
     }
 
     requestAnimationFrame(() => this.animate());
+  }
+  openWebsite(url:string){
+    window.open(url);
   }
 }
 
@@ -122,4 +157,7 @@ class Bubble {
       }
     }
   }
+
+
+ 
 }

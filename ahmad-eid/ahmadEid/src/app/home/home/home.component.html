@@ -1,48 +1,56 @@
-<section class="categories" >
+<section class="categories">
+    <div class="headerBlock" #headerBlock></div>
+    <div class="WelcomeMyPortfolio"  #welcome>
+        <div class="text-container">
+          <div *ngIf="showText1" class="text text1">Hello There</div>
+          <div *ngIf="showText2" class="text text2">Welcome To My Portfolio</div>
+        </div>
+      </div>
     <canvas #canvas></canvas>
-<div class="welcome" style="background-color: rgb(21 19 21/1);" >
+<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo>
 <!-- <div  class="welcomeBottom"></div>
 <div class="welcomeTop"></div> -->
 <div class="welcomeImage"> <img src="../assets/planet-light-colors-sci-fi.jpg"></div>
 <div class="welcomeText">
     <div class="welcomeName">Hi, I`m Ahmad</div>
-    <div class="welcomeDescription">Introduce yourself and your skills in 2-3 sentences. Try to be yourself and build a connection with the viewer.</div>
+    <div class="welcomeDescription">Your experienced Angular/Front End Developer deeply passionate about AI and web development. With a strong commitment to continuous learning and mastery, I specialize in creating accessible, inclusive, and responsive products. Let's team up and create amazing solutions together!</div>
     <div class="welcomeContact">
-        <h6> Contact: </h6>
+        <br>
+
         <ul>
-            <li>
-                <img src="../assets/github.png">
+            <li (click)="openWebsite('https://github.com/ahmadeidali863')">
+                <img src="../assets/icons8-github-500.png">
                 <a style="width: 100%;
-                text-align: start;">
-                    (123)-456-7890
+                text-align: start;" target="_blank">
+                   GitHub
                 </a>
             </li>
-            <li>
-                <img src="../assets/github.png">
+            <li (click)="openWebsite('https://www.kaggle.com/ahmadeidalimoshtha')">
+                <img src="../assets/icons8-kaggle-500.png">
                 <a style="width: 100%;
                 text-align: start;">
-                    (123)-456-7890
+                Kaggle
                 </a>
             </li>
-            <li>
-                <img src="../assets/github.png">
+            <li (click)="openWebsite('https://www.linkedin.com/in/ahmad-moshtha/')">
+                <img src="../assets/icons8-linkedin-500.png">
                 <a style="width: 100%;
                 text-align: start;">
-                    (123)-456-7890
+                   LinkedIn
                 </a>
             </li>
-            <li>
-                <img src="../assets/github.png">
+            <li (click)="openWebsite('https://www.youtube.com/@ahmadeid6095/featured')">
+                <img src="../assets/icons8-youtube-500.png">
                 <a style="width: 100%;
                 text-align: start;">
-                    (123)-456-7890
+                   Youtube
                 </a>
             </li>
-            <li>
-                <img src="../assets/github.png">
+            <li (click)="openWebsite('https://www.instagram.com/ahmadeid863/')">
+                <img src="../assets/icons8-instagram-500.png">
                 <a style="width: 100%;
                 text-align: start;">
-                    (123)-456-7890
+                    Instegram
                 </a>
             </li>
         </ul>
