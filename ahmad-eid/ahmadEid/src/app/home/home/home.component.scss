@@ -116,12 +116,11 @@ canvas {
         border-radius: 30px;
         gap: 10px;
         animation: openWelcome 1s ;
-        @media (max-width: 600px){
-            animation: openWelcomeMobile 1s ;
-            }
+            transition: 1s;
         overflow: hidden;
         @media (max-width: 600px){
             width: 80%;
+            animation: openWelcomeMobile 1s ;
             grid-template-columns: 1fr;
             top: 13vh;
             .welcomeText{
@@ -179,17 +178,12 @@ canvas {
         }
     @keyframes openWelcomeMobile { 
         0%{ opacity: 0;
-            top: 20vh;
+            top: 20vh ;
             }
-      
-      
-
         100%{ 
-            top: 13vh;
+            top: 13vh ;
             opacity: 1;
-        
         }
-
         }
 
 
@@ -282,11 +276,16 @@ h6{
         width: 100%;
         height: 100%;
         z-index: 9;
-        display: flex;
+        display: grid;
+        @media (max-width: 600px){
+          .text-container{
+            padding: 0 5px;
+          }
+        }
         justify-content: center;
         align-items: center;
+        text-align: center;
         gap: 10px;
-       
         transition: background-color 1s ease-in-out;
       }
       .WelcomeMyPortfolio {
@@ -330,6 +329,7 @@ h6{
           opacity: 1;
         }
       }
+    
 
 
       .headerBlock{

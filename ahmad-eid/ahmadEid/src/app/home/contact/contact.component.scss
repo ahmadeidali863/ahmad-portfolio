@@ -44,7 +44,23 @@ border-radius: 1rem; animation: openContactBoxAnimation 0.5s;
             height: 300px;border-radius: 1rem;background: #141414 !important;
             animation: openContactBoxAnimation 0.5s;
         }
-       
+        @media (max-width: 600px){
+            width: 90%;
+            margin: auto;
+            position: relative;
+            display: block;
+            height: 100vh;
+            top: 10vh;
+            grid-template-columns: 1fr;
+            *{
+                top: 0 !important;
+                margin: 20px 0 !important;
+                height:auto !important;
+            }
+            .boxImageOne ,.boxImageTwo ,.boxImageThree,.boxImageFour{
+                display: none;
+            }
+            }
        
     }
 }
@@ -60,11 +76,15 @@ img{
         margin-top: 15vh;
        
     }
-    100%{    margin-top: 0;
+    100%{ 
+        @media (max-width: 600px){
+            margin-top: 20px !important;
+        }
+        margin-top: 0;
         opacity: 1;
         }
     }
-
+  
 a{
    color: #fff;
 }

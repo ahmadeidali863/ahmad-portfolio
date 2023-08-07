@@ -41,12 +41,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
     }, 5000);
     setTimeout(() => {
       this.welcomeRef.nativeElement.style.display = 'none';
-      
+      this.welcomeTwoRef.nativeElement.style.display = 'none';
       this.headerBlockRef.nativeElement.style.opacity = '0';
     }, 6000);
     setTimeout(() => {
       this.headerBlockRef.nativeElement.style.display = 'none';
-      this.welcomeTwoRef.nativeElement.style.opacity = '1';
       this.welcomeTwoRef.nativeElement.style.display = 'grid';
   
     }, 6500);
