@@ -1,4 +1,8 @@
 import { Component, HostListener } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +12,9 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent {
   title = 'ahmadEid';
   mobileMenu : boolean = false;
+ constructor(public auth : AuthService){
 
+ }
   //-----------------OpenMobileMenu
     openMobileMenu () {
       if (this.mobileMenu == false) {

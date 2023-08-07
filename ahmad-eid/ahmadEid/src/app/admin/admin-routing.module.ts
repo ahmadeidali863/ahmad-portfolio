@@ -25,6 +25,11 @@ const routes: Routes = [
     loadComponent: () => import('../admin/admin-skills/admin-skills.component').then(m => m.AdminSkillsComponent)
     },
    {
+    path: 'info',
+    title:'Info',
+    loadChildren: () => import('../admin/admin-info/admin-info-routing.module').then(m => m.AdminInfoRoutingModule)
+    },
+   {
     path: 'certifications',
     title:'Certifications',
     loadComponent: () => import('../admin/admin-certification/admin-certification.component').then(m => m.AdminCertificationComponent)

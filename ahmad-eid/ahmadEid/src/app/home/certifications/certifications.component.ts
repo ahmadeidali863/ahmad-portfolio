@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Certification } from 'src/app/core/domin/certification';
 import { collection, getDocs } from 'firebase/firestore';
@@ -11,7 +11,7 @@ import { database } from 'src/app/app.module';
   templateUrl: './certifications.component.html',
   styleUrls: ['./certifications.component.scss']
 })
-export class CertificationsComponent {
+export class CertificationsComponent implements OnInit{
   collectionRef = collection(database, 'certifications');
   public iCertification: Certification = {
     id: 0,

@@ -2,14 +2,13 @@
 .adminPage{
     width: 100%;
     height: 100vh;
-    padding: 14vh 0;
     position: relative;
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 20px;
-    //   .adminInfo{
-    // //padding: 10px;
-    //   }
+      .adminInfo{
+    padding: 10px;
+      }
       .adminSidebar{
         ul > li {
         color: #ffffff;
