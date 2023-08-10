@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
 
  }
   ngOnInit(): void {
-    this.getvisterInfo();
+    //this.getvisterInfo();
     
 
  
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit{
   const request = this.http.get('https://api.ipify.org/?format=json');
   request.subscribe((res: any) => {
     this.iUserInfo.userIPAddress = res.ip;
-    this.addUserInfoDocument();
+   // this.addUserInfoDocument();
   });
 
   // navigator.geolocation.getCurrentPosition(

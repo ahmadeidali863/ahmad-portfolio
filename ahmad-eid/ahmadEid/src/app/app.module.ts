@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { getAnalytics } from "firebase/analytics";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp } from 'firebase/app';
@@ -21,6 +21,7 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
+const analytics = getAnalytics(app);
 @NgModule({
   declarations: [
     AppComponent

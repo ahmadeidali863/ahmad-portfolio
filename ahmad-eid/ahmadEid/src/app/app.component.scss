@@ -9,7 +9,13 @@
     --italic-font: "EB Garamond", serif;
   }
   //end theme
-
+  @keyframes header { 
+    0%{ opacity: 0;
+        }
+    100%{ 
+        opacity: 1;
+    }
+    }
   .header{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -24,7 +30,7 @@
     z-index: 6;
     height: 65px;
     background-color: #1D184200;
-  
+  animation: header 2s;
     @media (max-width: 575px) {
         grid-template-columns: 1fr 1fr;
         top: 0 !important;
