@@ -1,0 +1,94 @@
+*{
+    //font-family: 'Protest Revolution', sans-serif;
+    font-family: 'Merienda', cursive;
+}
+
+.lyrics {
+    text-align: center;
+  }
+  
+  .line {
+    opacity: 0;
+  }
+
+  .valentine{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    canvas{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .container{
+        width: 100%;
+    height: 100%;
+    position: absolute;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+        .one{
+            
+        }
+        .two{
+          
+            width: 90%;
+    margin: auto;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    display: grid;
+        }
+        .three{ 
+            width: 100%;
+            height: 100%;
+            position: fixed;
+          //  background-color: #FFB6C190;
+            transition: 1s;
+           // animation: backgroundvalantine 1s ease-in-out forwards;
+.valentine-theme {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .box {
+    width: 160px;
+    height: 50px;
+    background-color: red;
+    animation: box-appear 0.8s ease-in-out; 
+  }
+  
+  @keyframes box-appear {
+    0% {
+      opacity: 0; /* Start with zero opacity */
+      transform: scale(0); /* Start with zero scale (hidden) */
+    }
+    100% {
+      opacity: 1; /* Fade in with full opacity */
+      transform: scale(1); /* Scale to full size */
+    }
+  }
+        }
+    }
+  }
+
+  @keyframes backgroundvalantine {
+    0% {
+      background-color: transparent; /* Initial background color */
+      /* Other initial background properties if needed */
+    }
+    100% {
+     // background-color:#FFB6C190; /* Target background color for Valentine theme */
+      /* Other target background properties if needed */
+    }
+  }
+  
+ 

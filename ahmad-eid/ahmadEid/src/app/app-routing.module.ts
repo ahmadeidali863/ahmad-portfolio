@@ -35,6 +35,12 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     loadChildren: () => import('../app/admin/admin-routing.module').then(m => m.AdminRoutingModule)
+  },
+  {
+    path: 'notYetNamed',
+    title:'Valentine Day',
+    //canActivate: [AuthGuard],
+    loadComponent: () => import('../app/valentine-day/valentine-day.component').then(m => m.ValentineDayComponent)
   }
 ];
 

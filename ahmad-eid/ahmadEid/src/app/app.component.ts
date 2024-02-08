@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 
 import { addDoc, collection } from '@angular/fire/firestore';
 import { database } from './app.module';
 import { UserInfo } from './core/domin/user';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,10 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit{
   title = 'ahmadEid';
   mobileMenu : boolean = false;
+  containsNotYetNamed: boolean = false;
 
+  //private route = inject(ActivatedRoute);
+  
   public iUserInfo: UserInfo = {
     id: 0,
     userBrowser: '',
@@ -42,12 +46,13 @@ export class AppComponent implements OnInit{
     userLongitude: ''
   }
  constructor(public auth : AuthService,private http: HttpClient){
-
  }
   ngOnInit(): void {
     //this.getvisterInfo();
-    
-
+  //let id = this.route.snapshot.url;
+  let url =  window.location.href;
+  this.containsNotYetNamed = url.includes('notYetNamed');
+ 
  
   }
   collectionRef = collection(database, 'userInfo');

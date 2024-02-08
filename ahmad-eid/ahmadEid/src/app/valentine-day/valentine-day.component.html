@@ -1,0 +1,25 @@
+<section class="valentine" >
+    <canvas #canvas></canvas>
+    <div class="container">
+<div class="one" *ngIf="one">
+    <!-- <button  (click)="pauseAudio()"> Pause Audio</button> -->
+    <button  (click)="playAudio()">Are You Reaadyyy!!!</button>
+</div>
+<div class="two" *ngIf="two" >
+    <div class="word-display">
+        <p style="color: #fff;" [style.font-size.px]="fontSize">{{ displayedWord }}</p>
+      </div>
+</div>
+<div class="three" *ngIf="three">
+    <div class="valentine-theme">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+</div>
+</div>
+</section>
+
+
+
+ 

@@ -1,5 +1,5 @@
-<div [ngClass]="{'themeBlack': theme == 'themeBlack', 'themeLight': theme == 'themeLight'}">
-  <section class="scrollable header" [class.scrolled]="scrolled">
+<div [ngClass]="{'themeBlack': theme == 'themeBlack', 'themeLight': theme == 'themeLight'}" >
+  <section class="scrollable header" [class.scrolled]="scrolled" *ngIf="!this.containsNotYetNamed">
     <div class="logo" [routerLink]="['/']" style="cursor: pointer;">
     <h2>Ahmad Eid.</h2>
   </div>
