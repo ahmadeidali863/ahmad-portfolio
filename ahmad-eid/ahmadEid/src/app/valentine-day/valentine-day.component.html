@@ -1,21 +1,104 @@
 <section class="valentine" >
     <canvas #canvas></canvas>
     <div class="container">
-<div class="one" *ngIf="one">
-    <!-- <button  (click)="pauseAudio()"> Pause Audio</button> -->
-    <button  (click)="playAudio()">Are You Reaadyyy!!!</button>
+
+<div class="one" *ngIf="one" style="text-align: center; margin-top: 20px;color:#fff">
+    <p style="margin-bottom: 10px;">1. Put on your headphones for the best experience.</p>
+    <p style="margin-bottom: 20px;">2. Take a moment to relax and enjoy.</p>
+    <button class="buttons" style="padding: 14px; border: 0; font-size: 18px; width: 60%;margin: auto;" id="button" (click)="playAudio()">Start</button>
 </div>
 <div class="two" *ngIf="two" >
     <div class="word-display">
         <p style="color: #fff;" [style.font-size.px]="fontSize">{{ displayedWord }}</p>
       </div>
 </div>
-<div class="three" *ngIf="three">
+<div class="three"  *ngIf="three">
     <div class="valentine-theme">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+        <div class="love box" (click)="loveLatter()">
+            <button type="button" id="button" class="buttons">Love Letter</button>
+            <div id="heart1" class="hearts"></div>
+            <div id="heart2" class="hearts"></div>
+            <div id="heart3" class="hearts"></div>
+            <div id="heart4" class="hearts"></div>
+            <div id="heart5" class="hearts"></div>
+          </div>
+
+
+        <div class="box love" ><button type="button" id="button" class="buttons" (click)="remember()">Remember This</button></div>
+       
+        <div class="box love" ><button type="button" id="button" class="buttons" (click)="playAudioFour()">But Also Remember This</button></div>
+       
+     
       </div>
+</div>
+<div *ngIf="rememberThis">
+    <div style="width: 160px;
+    background-color: #ffdae0;
+    position: relative;
+    margin: auto;
+    bottom: 100px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;" >
+        <h6 (click)=" this.playAudioThree()">- Back -</h6>
+    </div>
+    <video width="640" height="360" autoplay style="width: 100%; height: 100%;" loop >
+        <source src="../assets/Fuck it All (+Lyrics) - Full Version HD 1080p (online-video-cutter.com).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+</div>
+<div *ngIf="Four">
+    <div style="width: 160px;
+    background-color: #ffdae0;
+    position: relative;
+    margin: 10px auto;
+    bottom: 100px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;">
+        <h6 *ngIf="!back" (click)=" this.displayWords2WithDelay()">- Play -</h6>
+        <h6  *ngIf="back" (click)=" this.displayWords2WithDelay()">- Replay -</h6>
+    </div>
+    <div style="width: 160px;
+    background-color: #ffdae0;
+    position: relative;
+    margin: 10px auto;
+    bottom: 100px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;" *ngIf="back">
+        <h6 (click)=" this.playAudioThree()">- Back -</h6>
+    </div>
+  <div  *ngIf="final">
+    <p style="color: #fff;text-align: center" [style.font-size.px]="fontSize">
+        In this cosmic journey, I'm your unwavering companion. Through stars and galaxies, I'll be there for you, no matter what.
+<br>
+<br>
+        With love,
+    <br>
+Ahmad
+</p>
+  </div>
+    <div class="word-display" style="text-align: center;">
+        <p style="color: #fff;" [style.font-size.px]="fontSize" *ngFor="let item of this.displayedWords">{{  item }}</p>
+      </div>
+</div>
+<div *ngIf="five">
+    <div style="width: 160px;
+    background-color: #ffdae0;
+    position: relative;
+    margin: 10px auto;
+    bottom: 100px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;">
+        <h6 (click)=" this.playAudioThree()">- Back -</h6>
+    </div>
+    <video width="640" height="360" autoplay style="width: 100%; height: 100%;" loop >
+        <source src="../assets/x2mate.com-The Most Astounding Fact - Neil deGrasse Tyson (online-video-cutter.com).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+   
 </div>
 </div>
 </section>

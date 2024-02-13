@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { take } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-valentine-day',
@@ -19,6 +20,11 @@ export class ValentineDayComponent implements OnInit {
   one: boolean = true;
   two: boolean = false;
   three: boolean = false;
+  Four: boolean = false;
+  final: boolean = false;
+  five: boolean = false;
+  back: boolean = false;
+  rememberThis: boolean = false;
   wordDelays: { word: string, delay: number }[] = [
     { word: 'There are those of us who like to venture to the unexplored', delay: 500 },
     { word: 'to see the beauty and the strange', delay: 5800 },
@@ -27,11 +33,28 @@ export class ValentineDayComponent implements OnInit {
     { word: ' with a sense of', delay: 14200 },
     { word: 'Wonder', delay: 16400 }
   ];
+  wordsDelays: { word: string, delay: number , timeoutId: any }[] = [
+    { word: 'في عَيْنَيْكِ يكمن الليل والنُّجوم تتَلأَلأ', delay: 500 ,timeoutId : 0},
+    { word: 'كَأَنَّ السَّمَاء حلَّت في عَيْنَيْكِ تمَامًا', delay: 4600 ,timeoutId : 0},
+    { word: 'أَتَساءَل في صَمْت عَن الأَسْرار الخَفِيَّة', delay: 7800,timeoutId : 0 },
+    { word: 'في زَمَن مَعَلَّق بَين شَفَتَيْكِ يَتَمَوَّج', delay: 10900 ,timeoutId : 0},
+    { word: 'كُلَّما تَنَفَّسْتِ يَتْلاشى الزَّمَان والمَكان', delay: 14300 ,timeoutId : 0},
+    { word: 'فَأَجِد نَفْسِي داخِل حِكايَة عَيْنِكِ السِّحْرِيَّة', delay: 17600 ,timeoutId : 0},
+    { word: 'تَتَدَاخَل الأَلْوَان والأَحْلام في مَحِيط عَيْنَيْكِ', delay: 20800 ,timeoutId : 0},
+    { word: 'وكُلَّما تَعَمَّقْتُ بِهَا اشتَدَّت دَهْجَتِي وانغِماسِي', delay: 24600,timeoutId : 0 },
+    { word: 'كَأَنَّهَا ثَقْبٌ أَسْوَد تَلْتَقِط كُلَّ الضُّوء', delay: 28500 ,timeoutId : 0},
+    { word: 'سِحْر يَجْذُب، قُوَّة لا مَفَرَّ مِنْهَا', delay: 31600 ,timeoutId : 0},
+    { word: 'رِحْلَة سَماوِيَّة بِدُون نِيَّة', delay: 34800 ,timeoutId : 0},
+    { word: 'أَنَا مَأْسُور كُلَّمَا قاوَمَت زادَت الجاذِبِيَّة', delay: 37500 ,timeoutId : 0},
+    { word: 'وفي أَعْماقِهَا تَكْتَشِف كَوْنًا آخَرَ', delay: 41500 ,timeoutId : 0},
+    { word: 'قَصَص لَمْ تَحْكَ، أَسْرار مَحْتَجَزَة، عَوالِم مُخْتَلِفَة', delay: 44900 ,timeoutId : 0}
+  ];
 
   displayedWord: string= "";
+  displayedWords: string[]= [];
   currentIndex: number = 0;
   fontSize: number = 0;
-  constructor(){
+  constructor(private http: HttpClient){
 
   }
  
@@ -91,22 +114,24 @@ export class ValentineDayComponent implements OnInit {
   openWebsite(url:string){
     window.open(url);
   }
-  
-  
-  // playAudioThree() {
-  //   this.one = false;
-  //   this.two = false;
-  //   this.three = true;
-  //   this.audio = new Audio('../assets/Keishou - MinakoSeki - Kingdom OST.mp3');
-  //   this.audio.autoplay = true;
-  
-
-  // }
-  playAudioThree() {
+ 
+  remember(){
     this.one = false;
     this.two = false;
+    this.three = false;
+    this.Four = false;
+    this.rememberThis = true;
+    this.audio.pause()
+  }
+  playAudioThree() {
+    this.audio.pause();
+    this.one = false;
+    this.five = false;
+    this.two = false;
     this.three = true;
-    this.audio = new Audio('../assets/Keishou - MinakoSeki - Kingdom OST.mp3');
+    this.Four = false;
+    this.rememberThis = false;
+    this.audio = new Audio('../assets/y2mate.is - indila___love_story-DF3XjEhJ40Y-192k-1707846556_[cut_230sec].mp3');
     this.audio.autoplay = true;
   // Fade out the stars gradually
   const fadeOutInterval = setInterval(() => {
@@ -118,16 +143,14 @@ export class ValentineDayComponent implements OnInit {
       }
     });
 
-    // Clear the canvas and redraw bubbles with updated opacity
     this.context!.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
     this.bubbles.forEach(bubble => {
       this.context!.beginPath();
       this.context!.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
-      this.context!.fillStyle = `rgba(#ff0000, ${bubble.opacity})`;
+      this.context!.fillStyle = `rgba(${bubble.color}, ${bubble.opacity})`;
       this.context!.fill();
     });
 
-    // Check if all stars have faded out
     const allFadedOut = this.bubbles.every(bubble => bubble.opacity === 0.4);
     if (allFadedOut) {
       clearInterval(fadeOutInterval);
@@ -135,10 +158,8 @@ export class ValentineDayComponent implements OnInit {
       this.one =false;
       this.two = false;
     this.three = true;
-      // Change the background to Valentine theme
-   //   document.body.style.backgroundColor = 'pink'; // Example color, you can set any color/image here
     }
-  }, 50); // Interval for fading out, adjust as needed
+  }, 50); 
 }
   
   displayWordsWithDelay() {
@@ -175,8 +196,54 @@ export class ValentineDayComponent implements OnInit {
       console.error("Audio object not yet initialized. Cannot pause.");
     }
   }
+  loveLatter(){
+      this.three = false;
+      this.Four = true;
+      this.audio.pause();
+      // setTimeout(() => {
+      //   this.displayWords2WithDelay();
+      //   this.audio = new Audio('../assets/love latter.mp3');
+      // this.audio.autoplay = true;
+      // }, 4000);
+      
+  }
+ 
+  displayWords2WithDelay() {
+    this.final = false;
 
-  
+    this.audio.pause();
+    this.displayedWords = [];
+    this.audio = new Audio('../assets/love latter.mp3');
+    this.audio.autoplay = true;
+    
+    this.wordsDelays.forEach((wordDelay,index) => {
+      clearTimeout(wordDelay.timeoutId);
+      wordDelay.timeoutId = setTimeout(() => {
+        this.displayedWords.push(wordDelay.word);
+        console.log(this.displayedWords[index]);
+      }, wordDelay.delay);
+    });
+    setTimeout(() => {
+      this.displayedWords = [];
+      this.back = true;
+      this.final = true;
+      this.audio = new Audio('../assets/x2mate.com - Frank Sinatra - L.O.V.E. (lyrics) (128 kbps).mp3');
+      this.audio.autoplay = true;
+    }, 50000); 
+  }
+
+
+  playAudioFour(){
+    this.five = true;
+    this.back = false;
+    this.final = false;
+    this.three = false;
+    this.Four = false;
+    this.one =false;
+    this.two = false;
+    this.audio.pause();
+  }
+
 }
 
 
@@ -207,11 +274,9 @@ class Bubble {
   }
 
   update() {
-    // Move the star
     this.x += this.speed * this.directionX;
     this.y += this.speed * this.directionY;
     
-    // Wrap the stars around the canvas if they go beyond its boundaries
     if (this.x < -this.radius) {
       this.x = window.innerWidth + this.radius;
     }
@@ -226,44 +291,17 @@ class Bubble {
     }
   }
   updateOpacity() {
-    // Make the star twinkle by changing its opacity
     if (this.flashing) {
       this.opacity += this.flashingSpeed;
       if (this.opacity >= 0.5 || this.opacity <= 0.1) {
-        this.flashingSpeed *= -1; // Reverse flashing speed
+        this.flashingSpeed *= -1; 
       }
     }
   }
-  // update() {
-  //   this.x += this.speed * this.directionX;
-  //   this.y += this.speed * this.directionY;
-
-  //   if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
-  //     this.directionX = -this.directionX;
-  //   }
-
-  //   if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
-  //     this.directionY = -this.directionY;
-  //   }
-  // }
-
+  
   toggleFlashing() {
     this.flashing = !this.flashing;
   }
-
-  // updateOpacity() {
-  //   if (this.flashing) {
-  //     this.opacity += this.flashingSpeed;
-
-  //     if (this.opacity > 1) {
-  //       this.opacity = 0.8;
-  //       this.flashingSpeed = -this.flashingSpeed;
-  //     } else if (this.opacity < 0.1) {
-  //       this.opacity = 0.1;
-  //       this.flashingSpeed = -this.flashingSpeed;
-  //     }
-  //   }
-//  }
 
 
  
