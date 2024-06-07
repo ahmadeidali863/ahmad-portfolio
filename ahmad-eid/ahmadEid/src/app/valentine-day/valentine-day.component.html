@@ -55,9 +55,8 @@
     bottom: 100px;
     text-align: center;
     padding: 10px;
-    border-radius: 8px;">
-        <h6 *ngIf="!back" (click)=" this.displayWords2WithDelay()">- Play -</h6>
-        <h6  *ngIf="back" (click)=" this.displayWords2WithDelay()">- Replay -</h6>
+    border-radius: 8px;" *ngIf="!back">
+        <h6  (click)=" this.displayWords2WithDelay()">- Play -</h6>
     </div>
     <div style="width: 160px;
     background-color: #ffdae0;
@@ -66,7 +65,7 @@
     bottom: 100px;
     text-align: center;
     padding: 10px;
-    border-radius: 8px;" *ngIf="back">
+    border-radius: 8px;" *ngIf="!back">
         <h6 (click)=" this.playAudioThree()">- Back -</h6>
     </div>
   <div  *ngIf="final">

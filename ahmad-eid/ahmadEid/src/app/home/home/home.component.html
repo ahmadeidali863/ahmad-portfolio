@@ -1,13 +1,13 @@
 <section class="categories" >
     <div class="headerBlock" #headerBlock></div>
-    <div class="WelcomeMyPortfolio"  #welcome>
+    <div class="WelcomeMyPortfolio"  #welcome *ngIf="false">
         <div class="text-container">
           <div *ngIf="showText1" class="text text1">Hello There</div>
           <div *ngIf="showText2" class="text text2">Welcome To My Portfolio</div>
         </div>
       </div>
     <canvas #canvas></canvas>
-<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo>
+<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo *ngIf="false">
 <!-- <div  class="welcomeBottom"></div>
 <div class="welcomeTop"></div> -->
 <div class="welcomeImage"> <img src="../assets/planet-light-colors-sci-fi.jpg"></div>
@@ -57,11 +57,36 @@
     </div>
 </div>
 </div>
+<div class="moon"></div>
+
+<section class="mainButtom">
+<div class="showSessionDetails"></div>
+<div class="sections">
+<div class="section">
+    <i class="fa-brands fa-medapps"></i>
+</div>
+<div class="section">
+    <i class="fa-solid fa-kitchen-set"></i>
+</div>
+<div class="section">
+    <i class="fa-solid fa-certificate"></i>
+</div>
+<div class="section">
+    <i class="fa-brands fa-medapps"></i>
+</div>
+<div class="section">
+    <i class="fa-brands fa-medapps"></i>
+</div>
+<div class="section">
+    <i class="fa-regular fa-id-badge"></i>
+</div>
+</div>
+</section>
 
 </section>
 
-<!--
 
+<!-- 
 
      <div class="category">
         <div class="soapBubble">
@@ -101,5 +126,4 @@
                 </div>
             </div>
         </div>
-</div>
--->
+</div> -->

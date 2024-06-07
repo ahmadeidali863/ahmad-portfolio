@@ -126,6 +126,7 @@ export class ValentineDayComponent implements OnInit {
   playAudioThree() {
     this.audio.pause();
     this.one = false;
+    this.final = false;
     this.five = false;
     this.two = false;
     this.three = true;
@@ -200,6 +201,8 @@ export class ValentineDayComponent implements OnInit {
       this.three = false;
       this.Four = true;
       this.audio.pause();
+
+    
       // setTimeout(() => {
       //   this.displayWords2WithDelay();
       //   this.audio = new Audio('../assets/love latter.mp3');
@@ -210,7 +213,8 @@ export class ValentineDayComponent implements OnInit {
  
   displayWords2WithDelay() {
     this.final = false;
-
+    this.back = true;
+    
     this.audio.pause();
     this.displayedWords = [];
     this.audio = new Audio('../assets/love latter.mp3');
@@ -225,7 +229,7 @@ export class ValentineDayComponent implements OnInit {
     });
     setTimeout(() => {
       this.displayedWords = [];
-      this.back = true;
+      this.back = false;
       this.final = true;
       this.audio = new Audio('../assets/x2mate.com - Frank Sinatra - L.O.V.E. (lyrics) (128 kbps).mp3');
       this.audio.autoplay = true;
