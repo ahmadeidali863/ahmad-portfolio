@@ -37,6 +37,11 @@ const routes: Routes = [
     loadChildren: () => import('../app/admin/admin-routing.module').then(m => m.AdminRoutingModule)
   },
   {
+    path: 'giftTech',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('../app/GiftTech/gift-tech.module').then(m => m.GiftTechModule)
+  },
+  {
     path: 'notYetNamed',
     title:'Valentine Day',
     //canActivate: [AuthGuard],

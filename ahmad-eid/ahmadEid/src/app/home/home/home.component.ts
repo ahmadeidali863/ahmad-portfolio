@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone:true,
   imports:[ 
     CommonModule,
+    RouterModule
     ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -17,6 +19,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   @ViewChild('welcome', { static: true }) welcomeRef!: ElementRef;
   @ViewChild('welcomeTwo', { static: true }) welcomeTwoRef!: ElementRef;
   @ViewChild('headerBlock', { static: true }) headerBlockRef!: ElementRef;
+  @ViewChild('moon', { static: true }) moonRef!: ElementRef;
 
   private canvas: HTMLCanvasElement | undefined;
   private context: CanvasRenderingContext2D | undefined;
@@ -42,11 +45,13 @@ export class HomeComponent implements AfterViewInit, OnInit {
     setTimeout(() => {
       this.welcomeRef.nativeElement.style.display = 'none';
       this.welcomeTwoRef.nativeElement.style.display = 'none';
+      this.moonRef.nativeElement.style.display = 'none';
       this.headerBlockRef.nativeElement.style.opacity = '0';
     }, 6000);
     setTimeout(() => {
       this.headerBlockRef.nativeElement.style.display = 'none';
       this.welcomeTwoRef.nativeElement.style.display = 'grid';
+      this.moonRef.nativeElement.style.display = 'grid';
   
     }, 6500);
   }

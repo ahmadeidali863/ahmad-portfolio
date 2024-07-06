@@ -1,16 +1,13 @@
 <section class="categories" >
     <div class="headerBlock" #headerBlock></div>
-    <div class="WelcomeMyPortfolio"  #welcome *ngIf="false">
+    <div class="WelcomeMyPortfolio"  #welcome >
         <div class="text-container">
           <div *ngIf="showText1" class="text text1">Hello There</div>
           <div *ngIf="showText2" class="text text2">Welcome To My Portfolio</div>
         </div>
       </div>
     <canvas #canvas></canvas>
-<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo *ngIf="false">
-<!-- <div  class="welcomeBottom"></div>
-<div class="welcomeTop"></div> -->
-<div class="welcomeImage"> <img src="../assets/planet-light-colors-sci-fi.jpg"></div>
+<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo >
 <div class="welcomeText">
     <div class="welcomeName">Hi, I`m Ahmad</div>
     <div class="welcomeDescription">Your experienced Angular/Front End Developer deeply passionate about AI and web development. With a strong commitment to continuous learning and mastery, I specialize in creating accessible, inclusive, and responsive products. Let's team up and create amazing solutions together!</div>
@@ -18,7 +15,7 @@
         <br>
 
         <ul>
-            <li (click)="openWebsite('https://github.com/ahmadeidali863')">
+            <!-- <li (click)="openWebsite('https://github.com/ahmadeidali863')">
                 <img src="../assets/icons8-github-500.png">
                 <a style="width: 100%;
                 text-align: start;" target="_blank">
@@ -31,7 +28,7 @@
                 text-align: start;">
                 Kaggle
                 </a>
-            </li>
+            </li> -->
             <li (click)="openWebsite('https://www.linkedin.com/in/ahmad-moshtha/')">
                 <img src="../assets/icons8-linkedin-500.png">
                 <a style="width: 100%;
@@ -46,20 +43,28 @@
                    Youtube
                 </a>
             </li>
-            <li (click)="openWebsite('https://www.instagram.com/ahmadeid863/')">
+            <li (click)="openWebsite('https://www.instagram.com/ahmad_eid_ali/')">
                 <img src="../assets/icons8-instagram-500.png">
                 <a style="width: 100%;
                 text-align: start;">
                     Instegram
                 </a>
             </li>
+            <li [routerLink]="['/giftTech']" routerLinkActive="router-link-active"  class="soon">
+                <img src="../assets/heart2.png">
+                <a style="width: 100%;
+                text-align: start;" >
+                    GiftTech
+                </a>
+              <span>Coming Soon...</span>
+            </li>
         </ul>
     </div>
 </div>
 </div>
-<div class="moon"></div>
+<div class="moon" #moon></div>
 
-<section class="mainButtom">
+<!-- <section class="mainButtom">
 <div class="showSessionDetails"></div>
 <div class="sections">
 <div class="section">
@@ -81,7 +86,7 @@
     <i class="fa-regular fa-id-badge"></i>
 </div>
 </div>
-</section>
+</section> -->
 
 </section>
 

@@ -156,25 +156,24 @@ canvas {
 
 //////////welcome
 .welcome {
-  width: 60%;
-  padding: 10px;
-  position: relative;
+  width: 100%;
+  max-width: 400px;
+  left: 20px;
+  position: fixed;
   display: none;
-  margin: auto;
-  // display: grid;
-  grid-template-columns: 1fr 2fr;
-  border-radius: 30px;
-  gap: 10px;
-  animation: openWelcome 1s;
+  border-radius: 8px;
+  animation: openWelcome 1s ease;
   transition: 1s;
   overflow: hidden;
+  z-index: 60;
 
   @media (max-width: 600px) {
     width: 80%;
+    left: 10%;
     animation: openWelcomeMobile 1s;
     grid-template-columns: 1fr;
     top: 13vh;
-
+    z-index:auto;
     .welcomeText {
       margin: 0;
 
@@ -219,13 +218,28 @@ canvas {
 @keyframes openWelcome {
   0% {
     opacity: 0;
-    top: 10vh;
+    left: -10vh;
   }
 
 
 
   100% {
-    top: 0;
+    left: 20px;
+    opacity: 1;
+
+  }
+
+}
+@keyframes openWelcomeforli {
+  0% {
+    opacity: 0;
+    left: -5vh;
+  }
+
+
+
+  100% {
+    left:0px;
     opacity: 1;
 
   }
@@ -262,19 +276,18 @@ canvas {
 }
 
 .welcomeText {
-  padding: 10px;
-  height: 80%;
+  padding: 18px;
   margin: auto;
   display: grid;
 
   @media (min-width: 600px) {
-    grid-template-rows: 1fr 1fr 4fr;
+ //   grid-template-rows: 1fr 1fr 4fr;
   }
 
   gap: 10px;
 
   .welcomeName {
-    font-size: 50px;
+    font-size: 30px;
     color: #fff;
     font-weight: 600;
   }
@@ -309,11 +322,26 @@ canvas {
     padding: 10px 0;
 
     @media (min-width: 600px) {
-      grid-template-columns: 1fr 1fr;
+      //grid-template-columns: 1fr 1fr;
     }
-
+.soon{
+  position: relative;
+  background: rgb(79 70 79);
+  span{
+    position: absolute;
+    right: 8px;
+    bottom: 12px;
+    font-size: 12px;
+  }
+  img{
+    width: 50px;
+    height: 50px;
+  }
+}
     li {
+      animation: openWelcomeforli 1.8s ease;
       cursor: pointer;
+      position: relative;
       width: 100%;
       height: 75px;
       margin: auto;
@@ -466,13 +494,14 @@ canvas {
 
 .moon {
   border-radius: 50%;
+  display: none;
   width: 500px;
   height: 500px;
   z-index: 10;
   background: url(../../../assets/moon.jpg);
   background-repeat: repeat-x;
   background-size: cover;
-  animation: moon-rotation 90s linear infinite;
+  animation: moon-rotation  90s linear infinite , moonAnimation 2s ease-in;
   box-shadow: inset 60px 0 40px black,
               inset 160px 0 60px rgba(0, 0, 0, .9),
               inset -160px 0 60px rgba(248, 248, 213, 0.2);
@@ -485,6 +514,7 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
+    animation: moonAnimation2 2s ease-in;
     width: 495px;
     height: 495px;
     border: 4px solid #000000;
@@ -495,6 +525,43 @@ canvas {
   to {background-position: 496px center;}
 }
 
+@keyframes moonAnimation {
+  0% {width: 300px;
+    opacity: 0;
+    height: 300px;
+   }
+  
+  100% {width: 500px;
+    opacity: 1;
+    height: 500px;
+    }
+}
+@keyframes moonAnimation2 {
+  0% {width: 300px;
+    height: 300px;
+    }
+  
+  100% {width: 495px;
+    height: 495px;
+   }
+}
+@keyframes moonAnimationmobile {
+  0% {width: 150px;
+    height: 150px;
+    transition: 1s;}
+  100% {width: 250px;
+    height: 250px;
+    transition: 1s;}
+}
+@keyframes moonAnimation2mobile {
+  0% {width: 150px;
+    height: 150px;
+    transition: 1s;}
+  100% {width: 245px;
+    height: 245px;
+    transition: 1s;}
+}
+
 @media screen and (max-width: 500px) {
   body {
       background: radial-gradient(circle at center, rgb(255, 255, 255) 115px, black 130px);
@@ -503,11 +570,14 @@ canvas {
   .moon {
       width: 250px;
       height: 250px;
+      display: none !important;
+      animation: moon-rotation  90s linear infinite , moonAnimationmobile 1.8s ease-in !important;
   }
 
   .moon:before {
       width: 245px;
       height: 245px;
+      animation: moonAnimation2mobile 1.8s ease-in !important;
       box-shadow: -60px 0 50px black;
   }    
 }
