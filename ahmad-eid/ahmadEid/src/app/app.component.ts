@@ -51,8 +51,8 @@ export class AppComponent implements OnInit{
     //this.getvisterInfo();
   //let id = this.route.snapshot.url;
   let url =  window.location.href;
-  this.containsNotYetNamed = url.includes('notYetNamed');
- 
+  this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech');
+
  
   }
   collectionRef = collection(database, 'userInfo');

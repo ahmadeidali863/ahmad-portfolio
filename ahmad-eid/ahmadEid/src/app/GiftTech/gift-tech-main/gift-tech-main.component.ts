@@ -9,7 +9,7 @@ export class GiftTechMainComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   private hearts: Heart[] = [];
-  private readonly numHearts: number = 100;
+  private readonly numHearts: number = 20;
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
@@ -17,26 +17,26 @@ export class GiftTechMainComponent implements OnInit {
     this.createHearts();
     this.animate();
   }
-
+  
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.resizeCanvas();
   }
-
+  
   private resizeCanvas() {
     this.canvas.nativeElement.width = window.innerWidth;
     this.canvas.nativeElement.height = window.innerHeight;
   }
-
+  
   private createHearts() {
     for (let i = 0; i < this.numHearts; i++) {
       this.hearts.push(new Heart(
         Math.random() * this.canvas.nativeElement.width,
-        Math.random() * this.canvas.nativeElement.height
+        Math.random() * this.canvas.nativeElement.height // Random position on the canvas
       ));
     }
   }
-
+  
   private animate() {
     this.ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     for (const heart of this.hearts) {
@@ -45,52 +45,49 @@ export class GiftTechMainComponent implements OnInit {
     }
     requestAnimationFrame(() => this.animate());
   }
-}
-class Heart {
-  private x: number;
-  private y: number;
-  private dx: number;
-  private dy: number;
-  private readonly size: number = 13;
-  private readonly speed: number = 3;
-  private color: string;
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-    this.dx = (Math.random() - 0.5) * this.speed;
-    this.dy = (Math.random() - 0.5) * this.speed;
-    this.color = this.getRandomColor();
   }
-
-  private getRandomColor(): string {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+  
+  class Heart {
+    private x: number;
+    private y: number;
+    private readonly dy: number = -2; // Consistent upward speed
+    private readonly size: number = 14; // Consistent size
+    private color: string;
+  
+    constructor(x: number, y: number) {
+      this.x = x;
+      this.y = y;
+      this.color = this.getRandomColor();
     }
-    return color;
-  }
-
-  update(canvas: HTMLCanvasElement) {
-    this.x += this.dx;
-    this.y += this.dy;
-
-    if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
-  }
-
-  draw(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    for (let i = 0; i < Math.PI * 2; i += 0.01) {
-      const scale = this.size / 25;
-      const x = scale * (16 * Math.pow(Math.sin(i), 3));
-      const y = scale * (13 * Math.cos(i) - 5 * Math.cos(2 * i) - 2 * Math.cos(3 * i) - Math.cos(4 * i));
-      ctx.fillRect(this.x + x, this.y - y, 1, 1);
+  
+    private getRandomColor(): string {
+      const colors = ['#FF0000']; // Red and pink shades , '#FF69B4', '#FFC0CB'
+      return colors[Math.floor(Math.random() * colors.length)];
     }
-    ctx.closePath();
-  }
+  
+    update(canvas: HTMLCanvasElement) {
+      this.y += this.dy;
+  
+      // Reset position if it moves out of the canvas
+      if (this.y < 0) {
+        this.y = canvas.height + Math.random() * 100;
+        this.x = Math.random() * canvas.width; // Random horizontal position
+        this.color = this.getRandomColor();
+      }
+    }
+  
+    draw(ctx: CanvasRenderingContext2D) {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      for (let i = 0; i < Math.PI * 2; i += 0.01) {
+        const scale = this.size / 25;
+        const x = scale * (16 * Math.pow(Math.sin(i), 3));
+        const y = scale * (13 * Math.cos(i) - 5 * Math.cos(2 * i) - 2 * Math.cos(3 * i) - Math.cos(4 * i));
+        ctx.fillRect(this.x + x, this.y - y, 1, 1);
+      }
+      ctx.closePath();
+    }
+  
 //   @ViewChild('canvasEl') canvasEl?: ElementRef;
 //   private ctx?: CanvasRenderingContext2D | null;
 //   private hearts: Heart[] = [];
