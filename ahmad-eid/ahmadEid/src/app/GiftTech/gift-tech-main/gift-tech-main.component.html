@@ -2,12 +2,78 @@
     <canvas #canvasEl width="800" height="600"></canvas>
   </div> -->
 
-  <canvas #canvas class="heartsbackground"></canvas>
-<section class="mainbox">
+  <!-- <canvas #canvas class="heartsbackground"></canvas> -->
+<!-- <section class="mainbox">
   <div class="title">Discover Heartfelt Gifts at GiftHeart</div>
   <div class="mainBoxContainer">
     <div class="left"></div>
     <div class="right"></div>
   </div>
 </section>
-  <div> </div>
+  <div> </div> -->
+  <div class="heart-container" *ngIf="!startNow">
+    <div class="heart"></div>
+  </div>
+  <div class="titleContainer" *ngIf="!startNow">
+<h1>Everything You Need to Create the Perfect Gift for Your Love</h1>
+<div class="love box">
+  <button type="button" id="button" class="buttons" (click)="start()">Start Now</button>
+  <div id="heart1" class="hearts"></div>
+  <div id="heart2" class="hearts"></div>
+  <div id="heart3" class="hearts"></div>
+  <div id="heart4" class="hearts"></div>
+  <div id="heart5" class="hearts"></div>
+</div>
+  </div>
+
+  <section class="sectionFeatures" *ngIf="startNow">
+    <div class="titleContainer">
+    <h1>A Complete platform for creating the Perfect Gift</h1>
+  </div>
+  <div class="features">
+    <h3>Adding Actions</h3>
+    <div class="featuress">
+        <div class="feature">
+            <p>Button to navigate to a page showcasing text, images, or videos.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animated-icon">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </div>
+        <div class="feature">
+            <p>Integrate slides with music or videos for dynamic presentations.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8v8m4-4H8"></path>
+          </svg>
+        </div>
+        <div class="feature">
+            <p>Incorporate interactive events such as quizzes or surveys.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="8"></line>
+          </svg>
+        </div>
+    </div>
+    <h3>Customizing the Theme</h3>
+    <div class="featuress">
+        <div class="feature">
+            <p>Change the background color and pattern to fit your style.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16v16H4z"></path>
+          </svg>
+        </div>
+        <div class="feature">
+            <p>Adjust the text color and font to match your aesthetic preferences.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16v16H4z"></path>
+          </svg>
+        </div>
+        <div class="feature">
+            <p>Set your preferred music, language, and other personal touches.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 1 1-10 10 10 10 0 0 1 10-10z"></path>
+          </svg>
+        </div>
+    </div>
+</div>
+  </section>

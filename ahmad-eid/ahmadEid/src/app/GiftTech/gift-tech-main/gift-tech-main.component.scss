@@ -25,6 +25,9 @@ p{
    // background: red;
     border-radius: 8px;
     position: fixed;
+    @media (max-width: 600px) {
+      width: calc(100% - 20px);
+    }
     .title{
       color: #fff;
       font-size: 16px;
@@ -44,3 +47,337 @@ p{
       }
     }
   }
+
+
+  //
+  .heart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+  }
+  
+  .heart {
+    top: 6vh;
+    position: relative;
+    width: 130px; 
+  height: 130px;
+  background: linear-gradient(45deg, #ff4b2b, #ff6f61, #ff9a9e, #ff416c);
+  background-size: 7000% 7000%;
+    animation: animation 3s linear infinite;
+    box-shadow: 0 0px 72px 8px #ff4b2b90;
+    transform: rotate(-45deg);
+    will-change: transform, background; 
+  }
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background: inherit;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  .heart:before {
+    top: -65px;
+    left: 0;
+  }
+  
+  .heart:after {
+    left: 65px;
+    top: 0;
+  }
+  
+
+  @keyframes animation{
+    0% {
+      opacity: 1;
+      transform: rotate(-45deg) scale(1);
+      background-position: 0% 50%;
+    }
+    25% {
+      transform: rotate(-40deg) scale(1.05);
+    }
+    50% {
+      opacity: 0.7;
+      background-position: 100% 50%;
+    }
+    75% {
+      transform: rotate(-50deg) scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      background-position: 0% 50%;
+      transform: rotate(-45deg) scale(1);
+    }
+  }
+
+  .titleContainer{
+    width: 90%;
+    margin: auto;
+
+    h1{
+      color: #fff;
+    transition: 0.4s;
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 34px;
+    }
+  }
+  
+
+  .box {
+    top: 10vh;
+    width: 50%;
+    margin: auto;
+  //  height: 70px;
+    position: relative;
+    border-radius: 8px;
+    background-color: #FFCCCC;
+    animation: box-appear 0.8s ease-in-out; 
+    
+    
+  }
+  
+  @keyframes box-appear {
+    0% {
+      opacity: 0; /* Start with zero opacity */
+      transform: scale(0); /* Start with zero scale (hidden) */
+    }
+    100% {
+      opacity: 1; /* Fade in with full opacity */
+      transform: scale(1); /* Scale to full size */
+    }
+  }
+  .buttons {
+    width: 100%;
+  //  height: 100%;
+  min-height: 50px;
+  position: relative;
+  font-size: 18px;
+  border: 2px solid #f2c2c8;
+  border-radius: 8px;
+  }
+  
+  #button {
+    background: linear-gradient(70deg, #FFE5E9, #FFC3CC);
+    color: #F05757;
+    outline: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+  
+  #heart1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -15px;
+      margin-left: -140px;
+      background-color: #ffdae0;
+      height: 50px;
+      width: 50px;
+      opacity: 0;
+  }
+  
+  #heart2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -80px;
+      margin-left: -40px;
+      background-color: #ffdae0;
+      height: 50px;
+      width: 50px;
+      opacity: 0;
+  }
+  
+  #heart3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: 40px;
+      margin-left: -40px;
+      background-color: #ffdae0;
+      height: 50px;
+      width: 50px;
+      opacity: 0;
+  }
+  
+  #heart4 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -80px;
+      margin-left: 90px;
+      background-color: #ffdae0;
+      height: 50px;
+      width: 50px;
+      opacity: 0;
+  }
+  
+  #heart5 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: 15px;
+      margin-left: 90px;
+      background-color: #ffdae0;
+      height: 50px;
+      width: 50px;
+      opacity: 0;
+  }
+  
+  .hearts:after {
+      background-color: #ffdae0;
+      content: "";
+      border-radius: 50%;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 0px;
+      left: 25px;
+    }
+    .hearts:before {
+      background-color: #ffdae0;
+      content: "";
+      border-radius: 50%;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: -25px;
+      left: 0px;
+    }
+
+  .love > #heart1 {
+    animation-name: hearts1;
+    animation-duration: 2.1s;
+    animation-iteration-count: infinite;
+  }
+  .love> #heart2 {
+    animation-name: hearts2;
+    animation-duration: 1.9s;
+    animation-iteration-count: infinite;
+  }
+  .love> #heart3 {
+    animation-name: hearts3;
+    animation-duration: 1.9s;
+    animation-iteration-count: infinite;
+  }
+  .love > #heart4 {
+    animation-name: hearts4;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .love > #heart5 {
+    animation-name: hearts5;
+    animation-duration: 2.1s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes hearts1 {
+    0% {
+      transform: scale(0.1, 0.1) rotate(-45deg);
+      opacity: 0.8;
+    } 
+  }
+  @keyframes hearts2 {
+    20% {
+      transform: scale(0.2, 0.2) rotate(-45deg);
+      opacity: 0.8;
+    }
+  }
+  @keyframes hearts3 {
+    40% {
+      transform: scale(0.3, 0.3) rotate(-45deg);
+      opacity: 0.8;
+    }
+  }
+  @keyframes hearts4 {
+    60% {
+      transform: scale(0.4, 0.4) rotate(-45deg);
+      opacity: 0.8;
+    }
+  }
+  @keyframes hearts5 {
+    80% {
+      transform: scale(0.6, 0.6) rotate(-45deg);
+      opacity: 0.8;
+    }
+  }
+
+.sectionFeatures{
+  width: 90%;
+    margin: auto;
+    height: 100%;
+    min-height: 100vh;
+
+    .titleContainer{
+      width: 90%;
+    margin: auto;
+    position: relative;
+    height: 20vh;
+    align-items: end;
+    display: grid;
+    padding: 20px 0;
+    }
+}
+  .features {
+    margin: 20px auto;
+    h3 {
+      box-shadow: 2px 4px 6px 1px rgba(255, 75, 43, 0.5647058824);
+      padding-bottom: 2px;
+      color: #fff;
+      border-radius: 4px;
+      background: #ff416c;
+      padding: 10px;
+      font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+  .featuress {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  .feature {
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+  .feature svg {
+      width: 50px;
+      height: 50px;
+  }
+  .feature p {
+    margin: 0;
+    font-size: 16px;
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    display: grid;
+    align-items: center;
+  }
+  .animated-icon {
+      animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+}

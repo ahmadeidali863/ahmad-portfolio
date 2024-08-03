@@ -12,9 +12,11 @@ const routes: Routes = [
     //   () => inject(MobileGuard).canActivate,
     //   () => inject(AuthGuard).canActivate
     //   ],
-    component: GiftTechMainComponent,
- children: []
-}
+    title: '',
+    //canActivate: [AuthGuard],
+    loadComponent: () => import('../GiftTech/gift-tech-main/gift-tech-main.component').then(m => m.GiftTechMainComponent),
+    children: []
+  }
 ];
 
 @NgModule({

@@ -5,7 +5,8 @@ import { addDoc, collection } from '@angular/fire/firestore';
 import { database } from './app.module';
 import { UserInfo } from './core/domin/user';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
+import { Subscription, filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -45,18 +46,38 @@ export class AppComponent implements OnInit{
     userLatitude: '',
     userLongitude: ''
   }
- constructor(public auth : AuthService,private http: HttpClient){
+   routerSubscription!: Subscription;
+ constructor(public auth : AuthService,private http: HttpClient,private route: ActivatedRoute, private router: Router){
  }
   ngOnInit(): void {
     //this.getvisterInfo();
   //let id = this.route.snapshot.url;
-  let url =  window.location.href;
-  this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech');
+  this.checkUrl();
 
+    // Subscribe to router events to check URL on navigation end
+    this.routerSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.checkUrl();
+    });
  
   }
+   checkUrl(): void {
+    // Get the current URL
+    const url = this.router.url;
+
+    // Check if the URL contains specific substrings
+    this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech');
+  }
+
+  ngOnDestroy(): void {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
   collectionRef = collection(database, 'userInfo');
- getvisterInfo(){
+ getvisterInfo(){ 
   this.iUserInfo.userBrowser = window.navigator.userAgent;
   this.iUserInfo.userScreenResolution = `${window.screen.width}x${window.screen.height}`;
   this.iUserInfo.userLanguagePreference = navigator.language;

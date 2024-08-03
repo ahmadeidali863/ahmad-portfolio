@@ -1,28 +1,55 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
-
+import { CommonModule } from "@angular/common";
+import { AfterViewInit, Component, DoCheck, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { NavigationEnd, Router } from "@angular/router";
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-gift-tech-main',
   templateUrl: './gift-tech-main.component.html',
-  styleUrls: ['./gift-tech-main.component.scss']
+  styleUrls: ['./gift-tech-main.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
+  providers: [Location]
 })
-export class GiftTechMainComponent implements OnInit {
+export class GiftTechMainComponent implements OnInit, DoCheck {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   private hearts: Heart[] = [];
   private readonly numHearts: number = 20;
+  startNow : boolean = false;
+
+  public yourVariable: boolean = true; // Initial value
+
+  ngDoCheck(){
+    console.log(this.startNow)
+  }
+  private isNavigatingBack: boolean = false;
+  constructor(private router: Router, private location: Location) {
+    // Listen for navigation events
+    history.pushState(null, '', this.router.url);
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: any) {
+    if (this.startNow) {
+      history.pushState(null, '', this.router.url);
+      this.startNow = false; 
+    }
+  }
 
   ngOnInit() {
-    this.ctx = this.canvas.nativeElement.getContext('2d')!;
-    this.resizeCanvas();
-    this.createHearts();
-    this.animate();
+    // this.ctx = this.canvas.nativeElement.getContext('2d')!;
+    // this.resizeCanvas();
+    // this.createHearts();
+    // this.animate();
   }
   
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.resizeCanvas();
   }
-  
+  start(){
+    this.startNow = true;
+  }
   private resizeCanvas() {
     this.canvas.nativeElement.width = window.innerWidth;
     this.canvas.nativeElement.height = window.innerHeight;
