@@ -501,7 +501,7 @@ canvas {
   background: url(../../../assets/moon.jpg);
   background-repeat: repeat-x;
   background-size: cover;
-  animation: moon-rotation  90s linear infinite , moonAnimation 2s ease-in;
+  animation: moon-rotation  90s linear infinite , moonAnimation 2s ease-in !important;
   box-shadow: inset 60px 0 40px black,
               inset 160px 0 60px rgba(0, 0, 0, .9),
               inset -160px 0 60px rgba(248, 248, 213, 0.2);
@@ -525,17 +525,6 @@ canvas {
   to {background-position: 496px center;}
 }
 
-@keyframes moonAnimation {
-  0% {width: 300px;
-    opacity: 0;
-    height: 300px;
-   }
-  
-  100% {width: 500px;
-    opacity: 1;
-    height: 500px;
-    }
-}
 @keyframes moonAnimation2 {
   0% {width: 300px;
     height: 300px;

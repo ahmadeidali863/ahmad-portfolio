@@ -1,13 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { AfterViewInit, Component, DoCheck, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import { NavigationEnd, Router } from "@angular/router";
+import { NavigationEnd, Router, RouterModule } from "@angular/router";
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-gift-tech-main',
   templateUrl: './gift-tech-main.component.html',
   styleUrls: ['./gift-tech-main.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   providers: [Location]
 })
 export class GiftTechMainComponent implements OnInit, DoCheck {
@@ -34,6 +34,48 @@ export class GiftTechMainComponent implements OnInit, DoCheck {
       history.pushState(null, '', this.router.url);
       this.startNow = false; 
     }
+  }
+
+  private visibleSections: Set<string> = new Set<string>();
+
+  toggle(section: string): void {
+    if (this.visibleSections.has(section)) {
+      this.visibleSections.delete(section);
+    } else {
+      this.visibleSections.add(section);
+    }
+  }
+
+  getStyle(section: string): { [key: string]: string } {
+    return this.visibleSections.has(section) ? 
+      { 
+        'opacity': '1', 
+        'height': 'auto', 
+        'margin': '15px 0',
+        'overflow': 'hidden' 
+      } : 
+      { 
+        'opacity': '0', 
+        'height': '0', 
+        'margin': '8px 0',
+        'overflow': 'hidden' 
+      };
+  }
+  getStyleForIcon(section: string): { [key: string]: string } {
+    return this.visibleSections.has(section) ? 
+      { 
+        'position': 'absolute',
+       'transform':'rotate(90deg)',
+       'transition': '0.6s',
+        'right': '15px'
+      } : 
+      { 
+       'position': 'absolute',
+       'transform':'rotate(0deg)',
+       'transition': '0.6s',
+        'right': '15px',
+        
+      };
   }
 
   ngOnInit() {

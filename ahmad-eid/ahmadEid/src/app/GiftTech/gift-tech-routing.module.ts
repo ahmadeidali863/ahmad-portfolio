@@ -15,7 +15,13 @@ const routes: Routes = [
     title: '',
     //canActivate: [AuthGuard],
     loadComponent: () => import('../GiftTech/gift-tech-main/gift-tech-main.component').then(m => m.GiftTechMainComponent),
-    children: []
+    children: [
+    ]
+  },
+  {
+    path: 'edit',
+    title: '',
+    loadComponent: () => import('../GiftTech/gift-tech-page-edit/gift-tech-page-edit.component').then(m => m.GiftTechPageEditComponent),
   }
 ];
 

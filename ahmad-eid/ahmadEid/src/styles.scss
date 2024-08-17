@@ -239,3 +239,15 @@ form {
         border-radius: 4px;
     }
   }
+
+  @keyframes moonAnimation {
+    0% {width: 300px;
+      opacity: 0;
+      height: 300px;
+     }
+    
+    100% {width: 500px;
+      opacity: 1;
+      height: 500px;
+      }
+  }

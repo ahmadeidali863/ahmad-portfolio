@@ -29,10 +29,19 @@
   <section class="sectionFeatures" *ngIf="startNow">
     <div class="titleContainer">
     <h1>A Complete platform for creating the Perfect Gift</h1>
+    <button routerLinkActive="active" [routerLink]="['/giftTech/edit']">Start Now</button>
   </div>
   <div class="features">
-    <h3>Adding Actions</h3>
-    <div class="featuress">
+    <h2 style="color: #fff;
+    background: #ff416c;
+    padding: 10px;
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 100;
+    font-size: 23px;
+    margin-bottom: 10px;
+    border-radius: 4px;">Discover What You Can Design</h2>
+    <h3 (click)="toggle('actions')">Adding Actions<i [ngStyle]="getStyleForIcon('actions')" class="fa-solid fa-arrow-right"></i></h3>
+    <div [ngStyle]="getStyle('actions')" class="featuress">
         <div class="feature">
             <p>Button to navigate to a page showcasing text, images, or videos.</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animated-icon">
@@ -54,8 +63,8 @@
           </svg>
         </div>
     </div>
-    <h3>Customizing the Theme</h3>
-    <div class="featuress">
+    <h3 (click)="toggle('theme')">Customizing the Theme<i [ngStyle]="getStyleForIcon('theme')" class="fa-solid fa-arrow-right"></i></h3>
+    <div [ngStyle]="getStyle('theme')" class="featuress">
         <div class="feature">
             <p>Change the background color and pattern to fit your style.</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

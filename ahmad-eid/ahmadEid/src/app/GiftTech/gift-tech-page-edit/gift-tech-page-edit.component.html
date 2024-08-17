@@ -1,1 +1,33 @@
-<p>gift-tech-page-edit works!</p>
+<section class="container">
+    <div class="viewPage" [ngStyle]="{
+        'background-color': customization.backgroundColor,
+        'color': customization.textColor,
+        'border-color': customization.borderColor,
+        'font-size': customization.fontSize,
+      }">
+      <img *ngIf="customization.backgroundImage" [ngStyle]="{'background-image': 'url(' + customization.backgroundImage + ')'}" style="width: 100%;height: 100%;  background-size: cover; /* Adjust according to your needs */
+  background-repeat: no-repeat;"> 
+    
+      </div>
+    <div class="boxs">
+    <div class="closebox" (click)="onDocumentClick()" [ngStyle]="{'height': showActions || showCustomisation ? 'calc(100% - (64px + 40%))' : 'calc(100% - 64px)'}"></div>
+      <div class="actions"  *ngIf="showActions" >
+        <div *ngFor="let box of actions" [ngStyle]="{
+            'background-color': customization.boxColor,
+            'border-color': customization.boxBorderColor,
+            'color' : '#000 !important'
+          }">
+            <div (click)="performAction(box)">{{ box.label }}</div>
+          </div>
+      </div>
+      <div class="customisation" *ngIf="showCustomisation">
+        <input type="file" (change)="onMusicFileChange($event)" />
+        <input type="file" (change)="onBackgroundImageChange($event)" />
+      </div>
+    </div>
+    
+    <div class="features">
+      <div class="feature" (click)="toggleActions()">Actions</div>
+      <div class="feature" (click)="toggleCustomisation()">Customisation</div>
+    </div>
+  </section>
