@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, inject } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 
 import { addDoc, collection } from '@angular/fire/firestore';
@@ -7,6 +7,7 @@ import { UserInfo } from './core/domin/user';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -47,9 +48,10 @@ export class AppComponent implements OnInit{
     userLongitude: ''
   }
    routerSubscription!: Subscription;
- constructor(public auth : AuthService,private http: HttpClient,private route: ActivatedRoute, private router: Router){
+ constructor(public auth : AuthService,private http: HttpClient,private route: ActivatedRoute, private router: Router,  @Inject(PLATFORM_ID) private platformId: Object){
  }
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
     //this.getvisterInfo();
   //let id = this.route.snapshot.url;
   this.checkUrl();
@@ -60,7 +62,7 @@ export class AppComponent implements OnInit{
     ).subscribe(() => {
       this.checkUrl();
     });
- 
+  }
   }
    checkUrl(): void {
     // Get the current URL
@@ -78,6 +80,7 @@ export class AppComponent implements OnInit{
 
   collectionRef = collection(database, 'userInfo');
  getvisterInfo(){ 
+  if (isPlatformBrowser(this.platformId)) {
   this.iUserInfo.userBrowser = window.navigator.userAgent;
   this.iUserInfo.userScreenResolution = `${window.screen.width}x${window.screen.height}`;
   this.iUserInfo.userLanguagePreference = navigator.language;
@@ -102,6 +105,7 @@ export class AppComponent implements OnInit{
   //     this.addUserInfoDocument();
   //   }
   // );
+}
 }
 
 addUserInfoDocument() {
@@ -156,12 +160,14 @@ addUserInfoDocument() {
     scrolled  = false;
     @HostListener('window:scroll', [])
     onWindowScroll() {
+      if (isPlatformBrowser(this.platformId)) {
       const yOffset = window.pageYOffset;
       if (yOffset > 20) {
         this.scrolled = true;
       } else {
         this.scrolled = false;
       }
+    }
     }
     theme = 'themeBlack';
 }

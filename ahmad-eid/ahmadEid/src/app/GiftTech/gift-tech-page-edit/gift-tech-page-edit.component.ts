@@ -1,6 +1,8 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Action, Customization } from 'src/app/core/domin/viewPage';
+import { GiftPageCustomization } from 'src/app/core/domin/giftPage';
+import { GiftTechService } from 'src/app/core/services/gift-tech.service';
 
 @Component({
   selector: 'app-gift-tech-page-edit',
@@ -10,6 +12,86 @@ import { Action, Customization } from 'src/app/core/domin/viewPage';
   styleUrls: ['./gift-tech-page-edit.component.scss']
 })
 export class GiftTechPageEditComponent {
+  customizations: GiftPageCustomization[] = []
+  customizationtest: GiftPageCustomization = {
+    id: 0,
+    backgroundColor: "#FFFFFF",
+    theme: "Dark",
+    backgroundPattern: "Pattern1",
+    pageActionRelated: "Action1",
+    pageHeader: "Welcome to My Page",
+    pageFooter: "Footer Text",
+    pageDescription: "This is a customizable page.",
+    textColor: "#000000",
+    textFont: "Arial",
+    textSize: "14px",
+    music: "background-music.mp3",
+    actions: [
+      {
+        pageId: "page1",
+        pageName: "Home",
+        buttons: [
+          {
+            buttonName: "Save",
+            buttonOrder: 1,
+            buttonBackground: "#FF5733",
+            buttonTheme: "Primary",
+            buttonFont: "Arial",
+            buttonColor: "#FFFFFF",
+            buttonSize: "16px"
+          },
+          {
+            buttonName: "Cancel",
+            buttonOrder: 2,
+            buttonBackground: "#C70039",
+            buttonTheme: "Danger",
+            buttonFont: "Arial",
+            buttonColor: "#FFFFFF",
+            buttonSize: "16px"
+          }
+        ],
+        pageIsOpened: true
+      }
+    ],
+  }
+;
+  
+  constructor(private giftTechService: GiftTechService) { }
+
+  ngOnInit(): void {
+    this.giftTechService.getCustomizations().subscribe(data => {
+      
+      this.customizations = data.map(e => {
+        return {
+          ...(e.payload.doc.data() as GiftPageCustomization)
+        };
+      });
+      this.customization.backgroundColor = this.customizations[0].backgroundColor
+    });
+  }
+//customization: GiftPageCustomization
+  saveCustomization() {
+    console.log(this.customizationtest)
+    if (this.customizationtest.id) {
+      this.giftTechService.updateCustomization(this.customizationtest.id, this.customizationtest);
+    } else {
+      this.giftTechService.addCustomization(this.customizationtest);
+    }
+  }
+
+  deleteCustomization(id: string) {
+    this.giftTechService.deleteCustomization(id);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   showActions = false;
   showCustomisation = false;
 
@@ -99,4 +181,6 @@ export class GiftTechPageEditComponent {
       reader.readAsDataURL(file);
     }
   }
+
+  
 }
