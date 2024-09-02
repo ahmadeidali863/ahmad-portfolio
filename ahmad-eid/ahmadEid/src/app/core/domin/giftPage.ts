@@ -10,7 +10,9 @@ export interface GiftPageCustomization {
     textColor: string;
     textFont: string;
     textSize: string;
+    musicFile: File | undefined;
     music: string;
+    backgroundImage: string;
     actions: PageAction[];
   }
 

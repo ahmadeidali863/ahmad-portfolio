@@ -4,9 +4,8 @@
       'color': customizationtest.textColor,
       'font-size': customizationtest.textSize,
     }">
-    <!-- <img *ngIf="customizationtest.backgroundImage" [ngStyle]="{'background-image': 'url(' + customizationtest.backgroundImage + ')'}" style="width: 100%;height: 100%;  background-size: cover; /* Adjust according to your needs */
-background-repeat: no-repeat;">  -->
-  
+    <img *ngIf="customizationtest.backgroundImage" [ngStyle]="{'background-image': 'url(' + customizationtest.backgroundImage + ')'}" style="width: 100%;height: 100%;  background-size: cover; /* Adjust according to your needs */
+background-repeat: no-repeat;"> 
     </div>
   <div class="boxs">
   <div class="closebox" (click)="onDocumentClick()" [ngStyle]="{'height': showActions || showCustomisation ? 'calc(100% - (64px + 40%))' : 'calc(100% - 64px)'}"></div>
@@ -23,11 +22,12 @@ background-repeat: no-repeat;">  -->
     <div class="customisation" *ngIf="showCustomisation">
         <div class="customisationContainer">
          <div class="customBox" (click)="toggleCustomisationBackground()">Select Background</div>
-         <div class="customBox"> Background</div>
+         <div class="customBox"> 
+          <label for="musicInput" class="musicLable"><span *ngIf="!selectedMusicFileName">Select Music File </span><span *ngIf="selectedMusicFileName"> {{selectedMusicFileName }}</span></label>
+          <input id="musicInput" class="file-input" type="file" (change)="onMusicFileChange($event)" />
+          </div>
          <div class="customBox">Select </div>
         </div>
-      <input type="file" (change)="onMusicFileChange($event)" />
-      <input type="file" (change)="onBackgroundImageChange($event)" />
     </div>
     <div class="customisation" *ngIf="showBackground">
       <div class="styleSideBar">
@@ -62,8 +62,21 @@ background-repeat: no-repeat;">  -->
         <span class="theme-btn" style="background-color: #f0FFF3;" (click)="changebackgraundtheme('#f0FFF3')"></span>
         <span class="theme-btn" style="background-color: #ffc2c7;" (click)="changebackgraundtheme('#ffc2c7')"></span>
       </div>
-      <div class="theme-box"><span>Pick Other Color</span></div>
-      <div class="theme-input"><span>Upload background Image</span></div>
+      <div class="theme-box">
+        <label for="colorInput" class="colorLable" [ngStyle]="{'background' : this.customizationtest.backgroundColor}"><span>Pick a Color</span></label>
+        <input
+        id="colorInput"
+        type="color"
+        placeholder="Pick Other Color"
+        [value]="this.customizationtest.backgroundColor"
+        (input)="changeBackgraundColor($event)"
+        class="color-input"
+      />
+      </div>
+      <div class="theme-input">
+       <label for="imageInput" class="colorLable"><span *ngIf="!selectedFileName">Upload background Image </span><span *ngIf="selectedFileName"> {{selectedFileName }}</span></label>
+       <input id="imageInput" class="file-input" type="file" (change)="onBackgroundImageChange($event)" />
+    </div>
     </div>
   </div>
   

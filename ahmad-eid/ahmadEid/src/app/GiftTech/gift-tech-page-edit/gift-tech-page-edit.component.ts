@@ -1,8 +1,9 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Action, Customization } from 'src/app/core/domin/viewPage';
 import { Button, GiftPageCustomization, PageAction } from 'src/app/core/domin/giftPage';
 import { GiftTechService } from 'src/app/core/services/gift-tech.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-gift-tech-page-edit',
@@ -25,6 +26,8 @@ export class GiftTechPageEditComponent {
     textColor: "#000000",
     textFont: "Arial",
     textSize: "14px",
+    backgroundImage:"",
+    musicFile: undefined,
     music: "background-music.mp3",
     actions: [
       {
@@ -132,7 +135,12 @@ export class GiftTechPageEditComponent {
     this.showCustomisation = false;
     this.showBackground = false;
   }
-
+  changeBackgraundColor(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement) {
+      this.customizationtest.backgroundColor = inputElement.value;
+    }
+  }
   changebackgraundtheme(themeName: string){
     this.customizationtest.backgroundColor = themeName;
   }
@@ -158,45 +166,67 @@ export class GiftTechPageEditComponent {
     this.customization.backgroundColor = color;
   }
   private currentAudio: HTMLAudioElement | null = null;
+   storage = inject(AngularFireStorage);
   performAction(action: Button) {
-    switch (action.actionType) {
-      case 'playMusic':
-        if (this.currentAudio) {
+    this.storage.ref(this.customizationtest.music).getDownloadURL().subscribe(url => {
+      if (this.currentAudio) {
+        if (this.currentAudio.src === url) {
+          // If the current audio source is the same as the URL, toggle play/pause
           if (this.currentAudio.paused) {
             this.currentAudio.play().catch(error => console.error('Playback failed:', error));
           } else {
             this.currentAudio.pause();
-            this.currentAudio.currentTime = 0; 
+            this.currentAudio.currentTime = 0; // Reset the playback to start
           }
-        } else if (this.customization.musicFile) {
-          this.currentAudio = new Audio(URL.createObjectURL(this.customization.musicFile));
-          this.currentAudio.play().catch(error => console.error('Playback failed:', error));
         } else {
-          console.warn('No music file selected');
+          // If the audio source is different, stop the current audio and play the new one
+          this.currentAudio.pause();
+          this.currentAudio.src = url;
+          this.currentAudio.load(); // Load the new audio source
+          this.currentAudio.play().catch(error => console.error('Playback failed:', error));
         }
-        break;
-      case 'showMessage':
-        if (action) {
-          alert(action);
-        }
-        break;
-    }
+      } else {
+        // If no current audio instance, create a new one
+        this.currentAudio = new Audio(url);
+        this.currentAudio.play().catch(error => console.error('Playback failed:', error));
+      }
+    }, error => {
+      console.error('Failed to retrieve music URL:', error);
+    });
+    //     break;
+    //   case 'showMessage':
+    //     if (action) {
+    //       alert(action);
+    //     }
+    //     break;
+    // }
   }
 
 
   @Output() customizationChange = new EventEmitter<Customization>();
 
-  onMusicFileChange(event: any) {
+  onMusicFileChange(event: any) {debugger
     const file = event.target.files[0];
-    this.customization.musicFile = file;
-    this.customizationChange.emit(this.customization);
-  }
+    this.selectedMusicFileName = file.name; 
 
+      const filePath = `music/${file.name}`;
+      const task = this.storage.upload(filePath, file);
+
+    this.customizationtest.music = filePath;
+    this.customizationChange.emit(this.customization);
+
+    
+    return task.snapshotChanges(); // You can also use task.downloadURL() to get the download URL
+
+  }
+  selectedMusicFileName : string = '';
+  selectedFileName : string = '';
   onBackgroundImageChange(event: any) {
     const file = event.target.files[0];
+    this.selectedFileName = file.name;
     const reader = new FileReader();
     reader.onload = (e: any) => {
-      this.customization.backgroundImage = e.target.result;
+      this.customizationtest.backgroundImage = e.target.result;
       this.customizationChange.emit(this.customization);
     };
     if (file) {
