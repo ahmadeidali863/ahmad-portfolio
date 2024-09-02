@@ -13,8 +13,8 @@ export class GiftTechService {
     return this.firestore.collection('giftPageCustomization').snapshotChanges();
   }
 
-  updateCustomization(id: number, data: GiftPageCustomization) {
-    return this.firestore.doc(`giftPageCustomization/${id}`).update(data);
+  updateCustomization(id: string, data: GiftPageCustomization) {
+    return this.firestore.collection('giftPageCustomization').doc(id).update(data);
   }
 
   addCustomization(data: GiftPageCustomization) {

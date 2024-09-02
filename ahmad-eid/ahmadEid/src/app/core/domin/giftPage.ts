@@ -1,5 +1,5 @@
 export interface GiftPageCustomization {
-    id: number;
+    id: string;
     backgroundColor: string;
     theme: string;
     backgroundPattern: string;
@@ -25,6 +25,7 @@ export interface GiftPageCustomization {
     buttonName: string;
     buttonOrder: number;
     buttonBackground: string;
+    actionType: string;
     buttonTheme: string;
     buttonFont: string;
     buttonColor: string;

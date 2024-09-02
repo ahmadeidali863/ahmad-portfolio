@@ -1,29 +1,69 @@
 <section class="container">
-  <div class="viewPage" [ngStyle]="{
-      'background-color': customization.backgroundColor,
-      'color': customization.textColor,
-      'border-color': customization.borderColor,
-      'font-size': customization.fontSize,
+  <div class="viewPage"  [ngStyle]="{
+      'background-color': customizationtest.backgroundColor,
+      'color': customizationtest.textColor,
+      'font-size': customizationtest.textSize,
     }">
-    <img *ngIf="customization.backgroundImage" [ngStyle]="{'background-image': 'url(' + customization.backgroundImage + ')'}" style="width: 100%;height: 100%;  background-size: cover; /* Adjust according to your needs */
-background-repeat: no-repeat;"> 
+    <!-- <img *ngIf="customizationtest.backgroundImage" [ngStyle]="{'background-image': 'url(' + customizationtest.backgroundImage + ')'}" style="width: 100%;height: 100%;  background-size: cover; /* Adjust according to your needs */
+background-repeat: no-repeat;">  -->
   
     </div>
   <div class="boxs">
   <div class="closebox" (click)="onDocumentClick()" [ngStyle]="{'height': showActions || showCustomisation ? 'calc(100% - (64px + 40%))' : 'calc(100% - 64px)'}"></div>
     <div class="actions"  *ngIf="showActions" >
-      <div *ngFor="let box of actions" [ngStyle]="{
-          'background-color': customization.boxColor,
-          'border-color': customization.boxBorderColor,
-          'color' : '#000 !important'
-        }">
-          <div (click)="performAction(box)">{{ box.label }}</div>
+      <div *ngFor="let box of customizationtest.actions" >
+          <div *ngFor="let item of box.buttons" (click)="performAction(item)"  [ngStyle]="{
+            'background-color': item.buttonBackground,
+            'border-color': item.buttonColor,
+            'color' : '#000 !important'
+          }">{{ item.buttonName }}</div>
         </div>
         <div><button (click)="saveCustomization()">add</button></div>
     </div>
     <div class="customisation" *ngIf="showCustomisation">
+        <div class="customisationContainer">
+         <div class="customBox" (click)="toggleCustomisationBackground()">Select Background</div>
+         <div class="customBox"> Background</div>
+         <div class="customBox">Select </div>
+        </div>
       <input type="file" (change)="onMusicFileChange($event)" />
       <input type="file" (change)="onBackgroundImageChange($event)" />
+    </div>
+    <div class="customisation" *ngIf="showBackground">
+      <div class="styleSideBar">
+        <span class="theme-btn" style="background-color: #000;" (click)="changebackgraundtheme('#000000')"></span>
+        <span class="theme-btn" style="background-color: #AF49AB;" (click)="changebackgraundtheme('#AF49AB')"></span>
+        <span class="theme-btn" style="background-color: #1039A0;" (click)="changebackgraundtheme('#1039A0')"></span>
+        <span class="theme-btn" style="background-color: #478BA2;" (click)="changebackgraundtheme('#478BA2')"></span>
+        <span class="theme-btn" style="background-color: #821963;" (click)="changebackgraundtheme('#821963')"></span>
+        <span class="theme-btn" style="background-color: #F15F4E;" (click)="changebackgraundtheme('#F15F4E')"></span>
+        <span class="theme-btn" style="background-color: #A637A0;" (click)="changebackgraundtheme('#A637A0')"></span>
+        <span class="theme-btn" style="background-color: #A6D1FF;" (click)="changebackgraundtheme('#A6D1FF')"></span>
+        <span class="theme-btn" style="background-color: #C9FFA0;" (click)="changebackgraundtheme('#C9FFA0')"></span>
+        <span class="theme-btn" style="background-color: #598901;" (click)="changebackgraundtheme('#598901')"></span>
+        <span class="theme-btn" style="background-color: #AAB6FB;" (click)="changebackgraundtheme('#AAB6FB')"></span>
+        <span class="theme-btn" style="background-color: #801336;" (click)="changebackgraundtheme('#801336')"></span>
+        <span class="theme-btn" style="background-color: #090088;" (click)="changebackgraundtheme('#090088')"></span>
+        <span class="theme-btn" style="background-color: #1E91D6;" (click)="changebackgraundtheme('#1E91D6')"></span>
+        <span class="theme-btn" style="background-color: #F392A3;" (click)="changebackgraundtheme('#F392A3')"></span>
+        <span class="theme-btn" style="background-color: #7C5EFD;" (click)="changebackgraundtheme('#7C5EFD')"></span>
+        <span class="theme-btn" style="background-color: #968FD8;" (click)="changebackgraundtheme('#968FD8')"></span>
+        <span class="theme-btn" style="background-color: #1039A0;" (click)="changebackgraundtheme('#1039A0')"></span>
+        <span class="theme-btn" style="background-color: #E4C1F9;" (click)="changebackgraundtheme('#E4C1F9')"></span>
+        <span class="theme-btn" style="background-color: #0FBDE9;" (click)="changebackgraundtheme('#0FBDE9')"></span>
+        <span class="theme-btn" style="background-color: #212A37;" (click)="changebackgraundtheme('#212A37')"></span>
+        <span class="theme-btn" style="background-color: #F87C44;" (click)="changebackgraundtheme('#F87C44')"></span>
+        <span class="theme-btn" style="background-color: #343B76;" (click)="changebackgraundtheme('#343B76')"></span>
+        <span class="theme-btn" style="background-color: #21dcfe;" (click)="changebackgraundtheme('#21dcfe')"></span>
+        <span class="theme-btn" style="background-color: #28251D;" (click)="changebackgraundtheme('#28251D')"></span>
+        <span class="theme-btn" style="background-color: #fd9f25;" (click)="changebackgraundtheme('#fd9f25')"></span>
+        <span class="theme-btn" style="background-color: #41258F;" (click)="changebackgraundtheme('#41258F')"></span>
+        <span class="theme-btn" style="background-color: #009FB7;" (click)="changebackgraundtheme('#009FB7')"></span>
+        <span class="theme-btn" style="background-color: #f0FFF3;" (click)="changebackgraundtheme('#f0FFF3')"></span>
+        <span class="theme-btn" style="background-color: #ffc2c7;" (click)="changebackgraundtheme('#ffc2c7')"></span>
+      </div>
+      <div class="theme-box"><span>Pick Other Color</span></div>
+      <div class="theme-input"><span>Upload background Image</span></div>
     </div>
   </div>
   
