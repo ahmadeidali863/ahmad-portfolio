@@ -105,12 +105,15 @@ export class GiftTechPageEditComponent {
   showActions = false;
   showCustomisation = false;
   showBackground = false;
-
+  showButtonCustomization = false;
+  showTextCustomization = false;
   toggleActions() {
     this.showActions = !this.showActions;
     if (this.showActions) {
       this.showCustomisation = false;
       this.showBackground = false;
+      this.showButtonCustomization = false;
+      this.showTextCustomization = false;
     }
   }
 
@@ -119,6 +122,8 @@ export class GiftTechPageEditComponent {
     if (this.showBackground) {
       this.showActions = false;
       this.showCustomisation = false;
+      this.showButtonCustomization = false;
+      this.showTextCustomization = false;
     }
   }
 
@@ -127,6 +132,8 @@ export class GiftTechPageEditComponent {
     if (this.showCustomisation) {
       this.showActions = false;
       this.showBackground = false;
+      this.showButtonCustomization = false;
+      this.showTextCustomization = false;
     }
   }
 
@@ -139,10 +146,12 @@ export class GiftTechPageEditComponent {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement) {
       this.customizationtest.backgroundColor = inputElement.value;
+      this.customizationtest.backgroundImage = '';
     }
   }
   changebackgraundtheme(themeName: string){
     this.customizationtest.backgroundColor = themeName;
+    this.customizationtest.backgroundImage = '';
   }
 
   customization: Customization = {
@@ -233,6 +242,40 @@ export class GiftTechPageEditComponent {
       reader.readAsDataURL(file);
     }
   }
-
+  addButton(){
+    let newButton = {
+      buttonName: "New Button",
+      buttonOrder: 3, 
+      buttonBackground: "#33FF57",
+      buttonTheme: "Secondary",
+      buttonFont: "Arial",
+      actionType: "newAction",
+      buttonColor: "#FFFFFF",
+      buttonSize: "16px"
+    };
   
+    const actionIndex = this.customizationtest.actions.findIndex(action => action.pageIsOpened);
+  
+    if (actionIndex !== -1) {
+      this.customizationtest.actions[actionIndex].buttons.push(newButton);
+    }
+  
+    this.showButtonCustomization = !this.showButtonCustomization;
+    if (this.showButtonCustomization) {
+      this.showCustomisation = false;
+      this.showBackground = false;
+      this.showTextCustomization = false;
+      this.showActions = false;
+    }
+  }
+  addTextSection(){
+    this.showTextCustomization = !this.showTextCustomization;
+    if (this.showTextCustomization) {
+      this.showCustomisation = false;
+      this.showBackground = false;
+      this.showButtonCustomization = false;
+      this.showActions = false;
+    }
+  }
+
 }
