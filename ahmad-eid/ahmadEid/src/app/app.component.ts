@@ -69,7 +69,7 @@ export class AppComponent implements OnInit{
     const url = this.router.url;
 
     // Check if the URL contains specific substrings
-    this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech');
+    this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech/view');
   }
 
   ngOnDestroy(): void {
