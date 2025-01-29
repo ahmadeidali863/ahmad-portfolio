@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   @ViewChild('welcomeTwo', { static: true }) welcomeTwoRef!: ElementRef;
   @ViewChild('headerBlock', { static: true }) headerBlockRef!: ElementRef;
   @ViewChild('moon', { static: true }) moonRef!: ElementRef;
-
+ 
   private canvas: HTMLCanvasElement | undefined;
   private context: CanvasRenderingContext2D | undefined;
   private bubbles: Bubble[] = [];
@@ -28,7 +28,17 @@ export class HomeComponent implements AfterViewInit, OnInit {
   showText1 = false;
   showText2 = false;
 
+  private starQuotes: string[] = [
+    "The stars are the land-marks of the universe.",
+    "Shoot for the moon. Even if you miss, you'll land among the stars.",
+    "Stars can't shine without darkness.",
+    "The stars are the jewels of the night.",
+    "Look at the stars. See their beauty. And in that beauty, see yourself."
+  ];
+
+
   ngAfterViewInit() {
+
     setTimeout(() => {
       this.showText1 = true;
     }, 1000);
@@ -162,6 +172,4 @@ class Bubble {
     }
   }
 
-
- 
 }

@@ -19,6 +19,19 @@ export class AppComponent implements OnInit{
   mobileMenu : boolean = false;
   containsNotYetNamed: boolean = false;
 
+  mouseX: number = 0;
+  mouseY: number = 0;
+  isHovering: boolean = false;
+  hoverText: string = '';
+
+  private starQuotes: string[] = [
+    "The stars are the land-marks of the universe.",
+    "Shoot for the moon. Even if you miss, you'll land among the stars.",
+    "Stars can't shine without darkness.",
+    "The stars are the jewels of the night.",
+    "Look at the stars. See their beauty. And in that beauty, see yourself."
+  ];
+
   //private route = inject(ActivatedRoute);
   
   public iUserInfo: UserInfo = {
@@ -56,7 +69,6 @@ export class AppComponent implements OnInit{
   //let id = this.route.snapshot.url;
   this.checkUrl();
 
-    // Subscribe to router events to check URL on navigation end
     this.routerSubscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -64,11 +76,9 @@ export class AppComponent implements OnInit{
     });
   }
   }
-   checkUrl(): void {
-    // Get the current URL
-    const url = this.router.url;
 
-    // Check if the URL contains specific substrings
+   checkUrl(): void {
+    const url = this.router.url;
     this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech/view');
   }
 
@@ -170,4 +180,35 @@ addUserInfoDocument() {
     }
     }
     theme = 'themeBlack';
+
+    @HostListener('mousemove', ['$event'])
+    onMouseMove(event: MouseEvent) {
+      this.mouseX = event.clientX;
+      this.mouseY = event.clientY;
+    }
+  
+    @HostListener('mouseover', ['$event'])
+    onMouseOver(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      if (target.hasAttribute('data-hover-text')) {
+        this.isHovering = true;
+        this.hoverText = target.getAttribute('data-hover-text') || '';
+        if (target.tagName === 'CANVAS') {
+          this.hoverText = this.getRandomStarQuote();
+        }
+      } else {
+        this.isHovering = false;
+      }
+    }
+  
+    @HostListener('mouseout', ['$event'])
+    onMouseOut(event: MouseEvent) {
+      this.isHovering = false;
+      this.hoverText = '';
+    }
+
+    private getRandomStarQuote(): string {
+      const randomIndex = Math.floor(Math.random() * this.starQuotes.length);
+      return this.starQuotes[randomIndex];
+    }
 }

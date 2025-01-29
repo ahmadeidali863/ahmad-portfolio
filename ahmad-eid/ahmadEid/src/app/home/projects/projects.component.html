@@ -1,118 +1,47 @@
-<!-- <section class="projects ">
-    <div class="projectContain">
-    <div class="projectsContain">
-      <div class="projectChossen">
-        <div class="select">
-            <select (change)="onProjectTypeSelected($event)">
-                <option value="" [selected]>Select a project type</option>
-                <option  *ngFor="let projectType of getProjectTypes()" [value]="projectType">{{ projectType }}</option>
-              </select>
-            <div class="gridContainer" *ngIf="selectedProjects.length > 0">
-                <div class="gridItem active" (click)="clickProject()" *ngFor="let project of selectedProjects">
-                  <div (click)="onProjectClick(project)">{{ project.projectName }}</div>
-                </div>
-                <div class="gridItem active" (click)="clickProject()" >
-                  <div >sdfgsdfg</div>
-                </div>
-                <div class="gridItem active" (click)="clickProject()" >
-                  <div >sdfgsdfg</div>
-                </div>
-                <div class="gridItem active" (click)="clickProject()" >
-                  <div >sdfgsdfg</div>
-                </div>
-                <div class="gridItem active" (click)="clickProject()" >
-                  <div >sdfgsdfg</div>
-                </div>
-                <div class="gridItem active" (click)="clickProject()" >
-                  <div >sdfgsdfg</div>
-                </div>
-                <div class="gridBackground"></div>
-              </div>
-            
-  
-           
-          </div>
-
-
-        </div>
-        <div class="projectInfo">
-          <div style="position: relative;">
-            <div class="projectName">  <h2>{{this.iProject.projectName}}</h2></div>
-            <div class="projectDescription"> <p>
-            "{{this.iProject.projectDescription}}" 
-            </p>
-        <p class="projectNameMobile" >ahhaha</p>
-
-        </div>
-          </div>
-          
-        </div>
-        <div class="projectPreview">
-        <div class="projectImage"><img src="{{this.iProject.projectImage}}" width="300" height="300"></div>
-        </div>
-
-       
-    </div>
-    </div>
-</section>
- -->
-<section class="projectSection">
-  <div class="sectionProjectContainer">
-    <div class="SectionTitle">
-      <h1 class="Title">Explore My Projects</h1> 
-      <div class="select">
-        <select (change)="onProjectTypeSelected($event)">
-          <option value="{{getProjectTypes()[0]}}" hidden disabled selected >{{getProjectTypes()[0]}}</option>
-          <option  *ngFor="let projectType of getProjectTypes()" [value]="projectType">{{ projectType }}</option>
+<section class="projectSection" data-hover-text="Welcome to the project wonderland!">
+  <div class="sectionProjectContainer" data-hover-text="Hold tight, projects ahead!">
+    <div class="SectionTitle" data-hover-text="Behold, the mighty project title!">
+      <h1 class="Title" data-hover-text="Prepare to be amazed by my projects!">Explore My Projects</h1> 
+      <div class="select" data-hover-text="Pick a project type">
+        <select (change)="onProjectTypeSelected($event)" data-hover-text="Pick a project type">
+          <option value="{{getProjectTypes()[0]}}" hidden disabled selected data-hover-text="The ultimate project type selector">{{getProjectTypes()[0]}}</option>
+          <option *ngFor="let projectType of getProjectTypes()" [value]="projectType" [attr.data-hover-text]="'Fancy a ' + projectType + ' project?'">{{ projectType }}</option>
         </select>
-       
       </div>
     </div>
-    <div class="projects" >
+    <div class="projects">
       <div class="projectsContainer">
-    <ng-container  *ngIf="selectedProjects.length > 0;else hahaha">
-      
-        <div class="project" *ngFor="let project of selectedProjects">
-          <a href="{{project.projectURL}}" target="_blank">
-          <div class="projectContainer">
-            <h4 class="projectName">{{project.projectName}}</h4>
-            <p class="projectDescription">“{{project.projectDescription}}”</p>
-            <ul class="projectTools">
-              <li class="projectTool" *ngFor="let item of project.projectTools">{{item}}</li>
-            </ul>
-            <div class="projectAccess" >
-              <a class="projectAccessLink" href="{{project.projectURL}}" target="_blank">Websit Like *</a>
-            </div>
-            <div class="projectImage">
-            
+        <ng-container *ngIf="selectedProjects.length > 0; else hahaha">
+          <div class="project" *ngFor="let project of selectedProjects" (click)="openProjectLink(project)">
+            <div class="projectContainer">
+              <h4 class="projectName">{{project.projectName}}</h4>
+              <p class="projectDescription">“{{project.projectDescription}}”</p>
+              <ul class="projectTools">
+                <li class="projectTool" *ngFor="let item of project.projectTools">{{item}}</li>
+              </ul>
+              <div class="projectAccess" *ngIf="project.projectURL && project.projectURL !== '-'">
+                <a class="projectAccessLink" href="{{project.projectURL}}" target="_blank">Website Link *</a>
+              </div>
+              <div class="projectImage">
                 <img src="{{project.projectImage}}" width="300" height="300" loading="lazy">
+              </div>
             </div>
           </div>
-        </a>
-
-        </div>
-      </ng-container>
-      <ng-template #hahaha>
-        <div class="project" *ngFor="let project of this.firstProjects">
-          <a href="{{project.projectURL}}" target="_blank">
-          <div class="projectContainer">
-            <h4 class="projectName">{{project.projectName}}</h4>
-            <p class="projectDescription">“{{project.projectDescription}}”</p>
-            <ul class="projectTools">
-              <li class="projectTool" *ngFor="let item of project.projectTools">{{item}}</li>
-            </ul>
-            <!-- <div class="projectAccess" >
-              <a class="projectAccessLink" href="{{project.projectURL}}" target="_blank" >Websit Like *</a>
-            </div> -->
-            <div class="projectImage" style="width:300; height:300">
-            
-                <img src="{{project.projectImage}}" width="300" height="300" loading="lazy">
+        </ng-container>
+        <ng-template #hahaha>
+          <div class="project" *ngFor="let project of this.firstProjects" (click)="openProjectLink(project)" [attr.data-hover-text]="'Discover ' + project.projectName">
+            <div class="projectContainer">
+              <h4 class="projectName">{{project.projectName}}</h4>
+              <p class="projectDescription">“{{project.projectDescription}}”</p>
+              <ul class="projectTools">
+                <li class="projectTool" *ngFor="let item of project.projectTools">{{item}}</li>
+              </ul>
+              <div class="projectImage" style="width:300; height:300" data-hover-text="Behold, the project image">
+                <img src="{{project.projectImage}}" width="300" height="300" loading="lazy" data-hover-text="Behold, the project image">
+              </div>
             </div>
           </div>
-        </a>
-
-        </div>
-      </ng-template>
+        </ng-template>
       </div>
     </div>
   </div>

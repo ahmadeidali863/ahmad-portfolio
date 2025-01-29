@@ -1,134 +1,54 @@
-<section class="categories" >
-    <div class="headerBlock" #headerBlock></div>
-    <div class="WelcomeMyPortfolio"  #welcome >
+<section class="categories" data-hover-text="Exploring categories">
+    <div class="headerBlock" #headerBlock data-hover-text="Header block"></div>
+    <div class="WelcomeMyPortfolio"  #welcome data-hover-text="Welcome to my portfolio">
         <div class="text-container">
-          <div *ngIf="showText1" class="text text1">Hello There</div>
-          <div *ngIf="showText2" class="text text2">Welcome To My Portfolio</div>
+          <div *ngIf="showText1" class="text text1" data-hover-text="Hello There">Hello There</div>
+          <div *ngIf="showText2" class="text text2" data-hover-text="Welcome To My Portfolio">Welcome To My Portfolio</div>
         </div>
       </div>
-    <canvas #canvas></canvas>
-<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo >
-<div class="welcomeText">
-    <div class="welcomeName">Hi, I`m Ahmad</div>
-    <div class="welcomeDescription">Your experienced Angular/Front End Developer deeply passionate about AI and web development. With a strong commitment to continuous learning and mastery, I specialize in creating accessible, inclusive, and responsive products. Let's team up and create amazing solutions together!</div>
-    <div class="welcomeContact">
-        <br>
+    <canvas #canvas data-hover-text="Canvas area"></canvas>
+<div class="welcome" style="background-color: rgb(21 19 21/1);" #welcomeTwo data-hover-text="Welcome section">
+<div class="welcomeText" style="position: relative;" data-hover-text="Welcome text">
+    <div class="welcomeName" data-hover-text="Hi, I'm Ahmad">Hi, I`m Ahmad</div>
+    <div class="welcomeDescription" data-hover-text="Description about Ahmad">I’m Ahmad Moshtha, A passionate Full-Stack Developer. I specialize in Angular, .NET, SQL, Firebase, and SAP Integration, and I’ve been fortunate to work on projects that challenge and inspire me. I also have a strong background in UI/UX Design, constantly looking for ways to craft intuitive and visually appealing digital experiences.
 
+        Beyond development, I’m passionate about exploring AI, Machine Learning (Python), and Motion Graphics (After Effects), and I enjoy dabbling in 3D Modeling (Blender). I’m always open to collaboration and new opportunities to innovate and create meaningful solutions.</div>
+    <div class="welcomeContact" id="box" data-hover-text="Contact section">
+        <br>
         <ul>
-            <!-- <li (click)="openWebsite('https://github.com/ahmadeidali863')">
-                <img src="../assets/icons8-github-500.png">
+            <li (click)="openWebsite('https://www.linkedin.com/in/ahmad-moshtha/')" data-hover-text="Oh, you want to know more about me? That's great!">
+                <img src="../assets/icons8-linkedin-500.png" data-hover-text="Oh, you want to know more about me? That's great!">
                 <a style="width: 100%;
-                text-align: start;" target="_blank">
-                   GitHub
-                </a>
-            </li>
-            <li (click)="openWebsite('https://www.kaggle.com/ahmadeidalimoshtha')">
-                <img src="../assets/icons8-kaggle-500.png">
-                <a style="width: 100%;
-                text-align: start;">
-                Kaggle
-                </a>
-            </li> -->
-            <li (click)="openWebsite('https://www.linkedin.com/in/ahmad-moshtha/')">
-                <img src="../assets/icons8-linkedin-500.png">
-                <a style="width: 100%;
-                text-align: start;">
+                text-align: start;" data-hover-text="Oh, you want to know more about me? That's great!">
                    LinkedIn
                 </a>
             </li>
-            <li (click)="openWebsite('https://www.youtube.com/@ahmadeid6095/featured')">
-                <img src="../assets/icons8-youtube-500.png">
+            <li (click)="openWebsite('https://www.youtube.com/@ahmadeid6095/featured')" data-hover-text="Check out my YouTube channel!">
+                <img src="../assets/icons8-youtube-500.png" data-hover-text="Check out my YouTube channel!">
                 <a style="width: 100%;
-                text-align: start;">
+                text-align: start;" data-hover-text="Check out my YouTube channel!">
                    Youtube
                 </a>
             </li>
-            <li (click)="openWebsite('https://www.instagram.com/ahmad_eid_ali/')">
-                <img src="../assets/icons8-instagram-500.png">
+            <li (click)="openWebsite('https://www.instagram.com/ahmad_eid_ali/')" data-hover-text="Follow me on Instagram!">
+                <img src="../assets/icons8-instagram-500.png" data-hover-text="Follow me on Instagram!">
                 <a style="width: 100%;
-                text-align: start;">
-                    Instegram
+                text-align: start;" data-hover-text="Follow me on Instagram!">
+                    Instagram
                 </a>
             </li>
-            <!-- <li [routerLink]="['/giftTech']" routerLinkActive="router-link-active"  class="soon">
-                <img src="../assets/heart2.png">
+          <li  routerLinkActive="router-link-active"  class="soon" data-hover-text="GiftTech is coming soon!">   <!--[routerLink]="['/giftTech']" -->
+                <img src="../assets/heart2.png" data-hover-text="GiftTech is coming soon!">
                 <a style="width: 100%;
-                text-align: start;" >
+                text-align: start;"  data-hover-text="GiftTech is coming soon!">
                     GiftTech
                 </a>
               <span>Coming Soon...</span>
-            </li> -->
+            
+            </li>
         </ul>
     </div>
 </div>
 </div>
-<div class="moon" #moon></div>
-
-<!-- <section class="mainButtom">
-<div class="showSessionDetails"></div>
-<div class="sections">
-<div class="section">
-    <i class="fa-brands fa-medapps"></i>
-</div>
-<div class="section">
-    <i class="fa-solid fa-kitchen-set"></i>
-</div>
-<div class="section">
-    <i class="fa-solid fa-certificate"></i>
-</div>
-<div class="section">
-    <i class="fa-brands fa-medapps"></i>
-</div>
-<div class="section">
-    <i class="fa-brands fa-medapps"></i>
-</div>
-<div class="section">
-    <i class="fa-regular fa-id-badge"></i>
-</div>
-</div>
-</section> -->
-
+<div class="moon" #moon data-hover-text="Exploring the moon, are we?"></div>
 </section>
-
-
-<!-- 
-
-     <div class="category">
-        <div class="soapBubble">
-            <div class="moveX">
-                <div class="moveY">
-                    <div class="deformX">  
-                        <div class="deformY">
-                            <div class ="bubbleImg" ></div>
-                            style="background-color: #8E0D3C;"
-                        </div>  
-                    </div>  
-                </div>
-            </div>
-        </div>
-        <div class="soapBubble">
-            <div class="moveX">
-                <div class="moveY">
-                    <div class="deformX">  
-                        <div class="deformY">
-                            <div class ="bubbleImg" >
-    style="background-color:#EF3B33 ;"
-                            </div>
-                        </div>  
-                    </div>  
-                </div>
-            </div>
-        </div>
-        <div class="soapBubble">
-            <div class="moveX">
-                <div class="moveY">
-                    <div class="deformX">  
-                        <div class="deformY">
-                            <div class ="bubbleImg"  >
-                                 style="background-color: #FDA1A2;"</div>
-                        </div>  
-                    </div>  
-                </div>
-            </div>
-        </div>
-</div> -->

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from 'src/app/core/domin/project';
 import { collection, getDocs } from 'firebase/firestore';
@@ -11,7 +11,7 @@ import { database } from 'src/app/app.module';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
   projects: Project[] = []
   firstProjects: Project[] = []
   public iProject: Project = {
@@ -30,6 +30,14 @@ export class ProjectsComponent {
   }
   collectionRef = collection(database, 'projects');
   projectTypeGroups: { [projectType: string]: Project[] } = {};
+
+  private starQuotes: string[] = [
+    "The stars are the land-marks of the universe.",
+    "Shoot for the moon. Even if you miss, you'll land among the stars.",
+    "Stars can't shine without darkness.",
+    "The stars are the jewels of the night.",
+    "Look at the stars. See their beauty. And in that beauty, see yourself."
+  ];
 
 getdata() {
   this.projects = [];
@@ -65,15 +73,20 @@ getProjectTypes(): string[] {
 }
 
 onProjectTypeSelected(event: any) {
-    const selectedProjectType = event.target.value;
+  const selectedProjectType = event.target.value;
   if (selectedProjectType) {
     this.selectedProjects = this.projectTypeGroups[selectedProjectType];
-  }else {
+  } else {
     this.selectedProjects = [];
   }
-  
-//this.clickProject();
+}
 
+openProjectLink(project: Project) {
+  if (project.projectURL && project.projectURL !== '-') {
+    window.open(project.projectURL, '_blank');
+  } else {
+    window.open(project.projectImage, '_blank');
+  }
 }
 
 ngOnInit() {
@@ -83,6 +96,11 @@ ngOnInit() {
     }, 200);
 
    // this.clickProject();
+}
+
+private getRandomStarQuote(): string {
+  const randomIndex = Math.floor(Math.random() * this.starQuotes.length);
+  return this.starQuotes[randomIndex];
 }
 
 // onProjectClick(project: Project) {

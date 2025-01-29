@@ -84,7 +84,7 @@
                  style="display: grid;
                  align-items: center;
                  color: #636767;">
-            <img *ngIf="url" [src]="url" height="200" width="300">
+            <img *ngIf="url" [src]="url" height="200" width="300" lazy="loading" />
            <span *ngIf="!url"> Upload Image </span>
           </label>
         </div>

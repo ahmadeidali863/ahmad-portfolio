@@ -62,9 +62,9 @@ p{
 }
 .certification:hover{
     .certificationImage{
-    padding: 0;
+  //  padding: 0;
     transition: 0.7s;
-    border: 1px solid #ffffff00;
+   // border: 1px solid #ffffff00;
 }
 }
 .certification{
@@ -94,7 +94,7 @@ p{
     }
    
     .certificationImage{
-        border: 6px solid rgb(255, 255, 255);
+      //  border: 6px solid rgb(255, 255, 255);
     border-radius: 1rem;
     display: block;
     transition: 0.7s;

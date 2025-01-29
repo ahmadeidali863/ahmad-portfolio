@@ -1,5 +1,4 @@
-     
-  //theme
+//theme
   //theme Black
   // .themeBlack {
    
@@ -29,7 +28,7 @@
     left: 0;
     z-index: 6;
     height: 65px;
-    background-color: #1D184200;
+    background-color: #000000;
   animation: header 2s;
     @media (max-width: 575px) {
         grid-template-columns: 1fr 1fr;
@@ -98,13 +97,13 @@ li.active a{
       height: 100%;
       align-items: center;
       cursor: pointer;
-      margin: auto 10px;
+      margin: auto 6px;
     }
     li:hover{
       a{
-        color: hsla(0,0%,100%,1);
-        font-size: 14.5px;
-        transition: 0.5s;
+        background: #ffffff30;
+        transition: 0.3s;
+        color: #fff;
       }
     }
     }
@@ -113,8 +112,12 @@ li.active a{
   }
   a{
     text-decoration: none;
-    color: hsla(0,0%,100%,.6);
+   // color: hsla(0,0%,100%,.6);
+   color: #fff;
     font-size: 14px;
+  //  border: 2px solid #ffffff60;
+    border-radius: 8px;
+    padding: 8px 24px;
   }
   
 }
@@ -236,4 +239,74 @@ ul{
   min-height: 100vh;
   padding: 0;
   left: -100%;
+}
+
+//mouse
+.mouse-follower {
+  position: fixed;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-50%);
+}
+//
+.eyes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .eyes-frame {
+    width: 50px;
+    height: 50px; 
+    position: relative;
+
+    .outer-circle {
+      fill: none;
+      stroke: var(--emotion-color, #4caf50);
+      stroke-width: 2;
+      stroke-dasharray: 140;
+      stroke-dashoffset: 0;
+      animation: circle-glow 3s infinite;
+    }
+
+    .eye-group {
+      .eye-shape {
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 1;
+        transition: all 0.3s ease;
+        overflow: hidden; 
+        animation: blink 3s infinite;
+      }
+
+      .pupil {
+        fill: #000;
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+    }
+  }
+}
+
+/* Animations */
+@keyframes circle-glow {
+  0%, 100% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes blink {
+  0%, 90%, 100% {
+    stroke-width: 1;
+  }
+  95% {
+    stroke-width: 5;
+  }
 }

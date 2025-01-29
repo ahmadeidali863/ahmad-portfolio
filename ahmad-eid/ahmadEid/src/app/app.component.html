@@ -1,48 +1,58 @@
-<div [ngClass]="{'themeBlack': theme == 'themeBlack', 'themeLight': theme == 'themeLight'}" >
-  <section class="scrollable header" [class.scrolled]="scrolled" *ngIf="!this.containsNotYetNamed">
-    <div class="logo" [routerLink]="['/']" style="cursor: pointer;">
-    <h2>Ahmad Eid.</h2>
-  </div>
-  <div class="sections">
-    <ul>
-      <li routerLinkActive="active" [routerLink]="['/projects']"><a >Projects</a></li>
-      <li routerLinkActive="active" [routerLink]="['/skills']"><a >Skills</a></li>
-      <!-- <li><a routerLinkActive="active" [routerLink]="['/Templats']">Templats</a></li>
-      <li><a routerLinkActive="active" [routerLink]="['/Services']">Services</a></li> -->
-      <li routerLinkActive="active" [routerLink]="['/certifications']"><a >Certifications</a></li>
-      <!-- <li><a routerLinkActive="active" [routerLink]="['/AboutMe']">AboutMe</a></li> -->
-      <li routerLinkActive="active" [routerLink]="['/contact']"><a >Contact</a></li>
-    </ul>
-  </div>
-  <div class="CV" >
-<button class="CVButton"style="cursor: pointer;" ><a href="https://drive.google.com/file/d/1aOkDRkFeC8frnuUWmmI9MqKmGNWweYre/view?usp=sharing" target="_blank" style="text-decoration: none; color: #ffffff; ">Download CV </a></button>
-<!-- <button (click)="this.auth.loginWithGoogle()">Login with Google</button>
-<button (click)="this.auth.logout()">logout with Google</button>
-<button (click)="this.auth.isLoggedIn()">isLoggedIn</button> -->
-<div class="menuIcon">
-  <svg fill="none" (click)="openMobileMenu()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-  </svg>
-  </div>
-  </div>
-
-  <div id="headerMobile" class="closeMenuMobile" >
-  <div class="menuIcon">
-    <svg fill="none" (click)="openMobileMenu()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-    </svg>
-  </div>
-      <ul class="mobile  text-center" (click)="openMobileMenu()">
-        <li><a routerLinkActive="active" [routerLink]="['/projects']">Projects</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/skills']">Skills</a></li>
-        <!-- <li><a routerLinkActive="active" [routerLink]="['/templats']">Templats</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/aboutMe']">AboutMe</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/services']">Services</a></li> -->
-        <li><a routerLinkActive="active" [routerLink]="['/certifications']">Certifications</a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/contact']">Contact</a></li>
-        </ul>
+<div [ngClass]="{'themeBlack': theme == 'themeBlack', 'themeLight': theme == 'themeLight'}" data-hover-text="App container">
+  <section class="scrollable header" [class.scrolled]="scrolled" *ngIf="!this.containsNotYetNamed" data-hover-text="Header section">
+    <div class="logo" [routerLink]="['/']" style="cursor: pointer;" data-hover-text="Logo">
+      <h2 data-hover-text="Ahmad Eid.">Ahmad Eid.</h2>
     </div>
-</section>
-<section class="welcomeSection">
-<router-outlet></router-outlet>
-</section>
+    <div class="sections" data-hover-text="Navigation sections">
+      <ul data-hover-text="Navigation list">
+        <li routerLinkActive="active" [routerLink]="['/projects']" data-hover-text="Projects"><a data-hover-text="Projects">Projects</a></li>
+        <li routerLinkActive="active" [routerLink]="['/skills']" data-hover-text="Skills"><a data-hover-text="Skills">Skills</a></li>
+        <li routerLinkActive="active" [routerLink]="['/certifications']" data-hover-text="Certifications"><a data-hover-text="Certifications">Certifications</a></li>
+        <li routerLinkActive="active" [routerLink]="['/contact']" data-hover-text="Contact"><a data-hover-text="Contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="CV" data-hover-text="CV section">
+      <button class="CVButton" style="cursor: pointer;" data-hover-text="Download CV"><a href="https://drive.google.com/file/d/1WWqS9d8PjLD52ykuhVbG-YmQFCSDqQgN/view?usp=sharing" target="_blank" style="text-decoration: none; color: #ffffff;" data-hover-text="Download CV">Download CV</a></button>
+      <!-- <button (click)="this.auth.loginWithGoogle()" data-hover-text="Login with Google">Login with Google</button>
+      <button (click)="this.auth.logout()" data-hover-text="Logout with Google">Logout with Google</button>
+      <button (click)="this.auth.isLoggedIn()" data-hover-text="Check if logged in">Is Logged In</button> -->
+      <div class="menuIcon" data-hover-text="Menu icon">
+        <svg fill="none" (click)="openMobileMenu()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-hover-text="Open menu">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+    </div>
+    <div id="headerMobile" class="closeMenuMobile" data-hover-text="Mobile menu">
+      <div class="menuIcon" data-hover-text="Menu icon">
+        <svg fill="none" (click)="openMobileMenu()" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-hover-text="Open menu">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+      <ul class="mobile text-center" (click)="openMobileMenu()" data-hover-text="Mobile navigation list">
+        <li><a routerLinkActive="active" [routerLink]="['/projects']" data-hover-text="Projects">Projects</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/skills']" data-hover-text="Skills">Skills</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/certifications']" data-hover-text="Certifications">Certifications</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/contact']" data-hover-text="Contact">Contact</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="welcomeSection" data-hover-text="Welcome section">
+    <router-outlet></router-outlet>
+  </section>
+  <div class="mouse-follower" style="display: flex; align-items: center; gap: 4px;" [ngStyle]="{'left.px': mouseX + 10, 'top.px': mouseY + 10}" data-hover-text="Mouse follower">
+    <div class="eyes-container" data-hover-text="Eyes container">
+      <svg class="eyes-frame" viewBox="0 0 50 50" data-hover-text="Eyes frame">
+        <circle class="outer-circle" cx="25" cy="25" r="20" data-hover-text="Outer circle"></circle>
+        <g class="eye-group left-eye" data-hover-text="Left eye">
+          <ellipse class="eye-shape" cx="15" cy="25" rx="6" ry="3" data-hover-text="Eye shape"></ellipse>
+          <circle class="pupil" cx="15" cy="25" r="1.5" data-hover-text="Pupil"></circle>
+        </g>
+        <g class="eye-group right-eye" data-hover-text="Right eye">
+          <ellipse class="eye-shape" cx="35" cy="25" rx="6" ry="3" data-hover-text="Eye shape"></ellipse>
+          <circle class="pupil" cx="35" cy="25" r="1.5" data-hover-text="Pupil"></circle>
+        </g>
+      </svg>
+    </div>
+    {{ hoverText }}
+  </div>
+</div>
