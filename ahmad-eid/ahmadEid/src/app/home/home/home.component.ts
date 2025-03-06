@@ -1,16 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Firestore, collection, getDocs } from 'firebase/firestore';
+import { PaypalComponent } from 'src/app/GiftTech/paypal/paypal.component';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
   standalone:true,
   imports:[ 
     CommonModule,
-    RouterModule
+    RouterModule,PaypalComponent
+    
     ],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [
+    { provide: Firestore, useFactory: getFirestore }
+  ]
 })
 
 
@@ -36,7 +43,13 @@ export class HomeComponent implements AfterViewInit, OnInit {
     "Look at the stars. See their beauty. And in that beauty, see yourself."
   ];
 
-
+  async checkPayments(firestore: Firestore) {
+    const paymentsRef = collection(firestore, 'payments');
+    const snapshot = await getDocs(paymentsRef);
+    snapshot.forEach(doc => {
+      console.log(doc.id, '=>', doc.data());
+    });
+  }
   ngAfterViewInit() {
 
     setTimeout(() => {

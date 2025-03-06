@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { getFirestore } from 'firebase/firestore';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SafePipe } from './core/safe.pipe';
 const firebaseConfig = {
   apiKey: "AIzaSyBr8xhrGhQkqKGGiY9TR_yCJ8J7R887zPA",
   authDomain: "ahmad-eid-portfolio.firebaseapp.com",

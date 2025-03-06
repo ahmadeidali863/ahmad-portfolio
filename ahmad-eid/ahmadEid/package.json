@@ -23,6 +23,7 @@
     "@firebase/messaging": "^0.12.6",
     "firebase": "^9.22.2",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.17.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

@@ -252,6 +252,10 @@ ul{
   z-index: 1000;
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform: translateY(-50%);
+
+  @media (max-width: 575px) {
+    display: none !important;
+  }
 }
 //
 .eyes-container {

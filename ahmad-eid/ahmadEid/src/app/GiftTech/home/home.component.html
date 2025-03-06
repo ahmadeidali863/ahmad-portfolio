@@ -1,0 +1,111 @@
+<section class="giftHome">
+    <div class="startAnimation">
+        <img src="../assets/Heart.svg" alt="heart" class="heart">
+        <h3 class="giftText">The Perfect Gift</h3>
+    </div>
+    <div class="mainContent">
+        <div class="sectionTitle">
+            <div class="largeBox">
+                <h2>All you need to create the perfect gift</h2>
+                <div class="icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="sectionThemes">
+            <h3 class="getStartTitle">Choose The Theme You Want To Start:</h3>
+            <div class="themeBoxes">
+                <div class="themeBox" (click)="onThemeBoxClick($event)">
+                    <i class="fas fa-heart"></i>
+                    <p>Valentine</p>
+                </div>
+                <div class="themeBox" (click)="onThemeBoxClick($event)">
+                    <i class="fas fa-birthday-cake"></i>
+                    <p>Birthday</p>
+                </div>
+                <div class="themeBox" (click)="onThemeBoxClick($event)">
+                    <i class="fas fa-ring"></i>
+                    <p>Anniversary</p>
+                </div>
+                <div class="themeBox" (click)="onThemeBoxClick($event)">
+                    <i class="fas fa-tree"></i>
+                    <p>Holiday</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="templates" *ngIf="showTemplatesSection" (dragend)="onDrag($event)" (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)">
+        <div class="return-arrow" (click)="onReturnClick()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="template" *ngFor="let template of filteredTemplates; let i = index"
+            [style.transform]="'translateX(' + (i - currentTemplateIndex) * 100 + '%)'">
+            <div class="templateExample"> <!-- [ngStyle]="{'height': 'calc(100vh - ' + (templateInfoHeight) + 'px)'}"-->
+                <div *ngIf="template.videoSrc; else customDesign">
+                    <!-- <video [src]="template.videoSrc" muted playsinline></video> -->
+                    <div class="playButton" (click)="onPlayButtonClick(i)">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+                <ng-template #customDesign>
+                    <div class="customDesignMessage">
+                        <p>{{ template.description }}</p>
+                        <a href="https://wa.me/962785929375" target="_blank">Contact us on WhatsApp</a>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="templateInfo">
+                <div class="title">{{ template.title }}</div>
+                <div class="description">{{ template.description }}</div>
+                <ul class="templateFeatures">
+                    <li *ngFor="let feature of template.features">{{feature}}</li>
+                </ul>
+            </div>
+            <div class="bottomTools">
+                <div class="bottomToolsBackground"></div>
+                <div class="templateSelect">
+                    <button class="buyNowButton" (click)="onBuyNowClick()">{{ template.category === 'Custom' ? 'Contact WhatsApp' : 'Buy Now ' + template.price }}</button>
+                </div>
+                <div class="arrow arrow-left" (click)="onPrevTemplate()">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="arrow arrow-right" (click)="onNextTemplate()">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 6L15 12L9 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="paymentPopup" *ngIf="showPaymentPopup">
+        <div class="paymentPopupContent">
+            <div class="paymentPopupHeader">
+                <h3>Payment</h3>
+                <span class="closeButton" (click)="closePaymentPopup()">&times;</span>
+            </div>
+            <form (ngSubmit)="onNext()" *ngIf="!showPayPalForm">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" [(ngModel)]="email" name="email" required email>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" [(ngModel)]="password" name="password" required minlength="6">
+                </div>
+                <button type="submit" class="submitButton">Next</button>
+            </form>
+            <ng-container *ngIf="showPayPalForm">
+            <div id="paypal-button-container" ></div>
+        </ng-container>
+        </div>
+    </div>
+</section>

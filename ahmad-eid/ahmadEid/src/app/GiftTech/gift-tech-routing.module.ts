@@ -24,6 +24,11 @@ const routes: Routes = [
     path: 'view',
     title: '',
     loadComponent: () => import('../GiftTech/gift-tech-page/gift-tech-page.component').then(m => m.GiftTechPageComponent),
+  },
+  {
+    path: 'start',
+    title: 'home',
+    loadComponent: () => import('../GiftTech/home/home.component').then(m => m.HomeComponent),
   }
 ];
 

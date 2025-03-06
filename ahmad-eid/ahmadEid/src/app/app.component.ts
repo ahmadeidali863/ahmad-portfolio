@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
   title = 'ahmadEid';
   mobileMenu : boolean = false;
   containsNotYetNamed: boolean = false;
-
+gift: boolean = false;
   mouseX: number = 0;
   mouseY: number = 0;
   isHovering: boolean = false;
@@ -79,7 +79,8 @@ export class AppComponent implements OnInit{
 
    checkUrl(): void {
     const url = this.router.url;
-    this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech/view');
+   
+    this.containsNotYetNamed = url.includes('notYetNamed') || url.includes('giftTech');
   }
 
   ngOnDestroy(): void {

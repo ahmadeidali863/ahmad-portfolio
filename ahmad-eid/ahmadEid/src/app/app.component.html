@@ -39,7 +39,7 @@
   <section class="welcomeSection" data-hover-text="Welcome section">
     <router-outlet></router-outlet>
   </section>
-  <div class="mouse-follower" style="display: flex; align-items: center; gap: 4px;" [ngStyle]="{'left.px': mouseX + 10, 'top.px': mouseY + 10}" data-hover-text="Mouse follower">
+  <div class="mouse-follower"  *ngIf="!this.containsNotYetNamed" style="display: flex; align-items: center; gap: 4px;" [ngStyle]="{'left.px': mouseX + 10, 'top.px': mouseY + 10}" data-hover-text="Mouse follower">
     <div class="eyes-container" data-hover-text="Eyes container">
       <svg class="eyes-frame" viewBox="0 0 50 50" data-hover-text="Eyes frame">
         <circle class="outer-circle" cx="25" cy="25" r="20" data-hover-text="Outer circle"></circle>
